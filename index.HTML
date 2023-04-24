@@ -14,11 +14,33 @@
             <div id="search-bar"></div>
             <div id="filter-section">
                 <div class ="category-filter-header"> 
-                    <!-- each filter option needs a header and a list -->
-                    <ol clsss = "category-filter-list">
-                        <!-- append filter options here -->
-                    </ol>
-                    <!-- clear/select all filter category buttons -->
+                    <h3 id="has-alcohol-header">Drink Type</h3>
+                    <ul clsss="type-filter-list" id="type-filter-list">
+                        <li><input type="checkbox" value="alcoholic">Alcoholic</li>
+                        <li><input type="checkbox" value="non-alcoholic">Non-Alcoholic</li>
+                        <li><input type="checkbox" value="aslcohol-optional">Alcohol Optional</li>
+                    </ul>
+                    <h3 id="spirit-filter-header">Base Spirits</h3>
+                    <ul clsss = "spirit-filter-list" id="spirit-filter-list">
+                        <li><input type="checkbox" value="vodka">Vodka</li>
+                        <li><input type="checkbox" value="whiskey">Whiskey</li>
+                        <li><input type="checkbox" value="rum">Rum</li>
+                        <li><input type="checkbox" value="gin">Gin</li>
+                        <li><input type="checkbox" value="scotch">Scotch</li>
+                        <li><input type="checkbox" value="tequila">Tequila</li>
+                        <li><input type="checkbox" value="bourbon">Bourbon</li>
+                        <li><input type="checkbox" value="brandy">Brandy</li>
+                        <li><input type="checkbox" value="schnapps">Schnapps</li>
+                    </ul>
+                    <h3 id="type-filter-header">Drink Type</h3>
+                    <ul clsss="type-filter-list" id="type-filter-list">
+                        <li><input type="checkbox" value="cocktail">Cocktail</li>
+                        <li><input type="checkbox" value="shot">Shot</li>
+                        <li><input type="checkbox" value="punch">Punch</li>
+                        <li><input type="checkbox" value="other">Other</li>
+                        <!-- need to find out how to bucket into these categories-->
+                    </ul>
+                        <!-- clear/select all filter category buttons -->
                 </div>
                 <!-- clear/select all filters buttons -->
             </div>
@@ -44,7 +66,15 @@
             <p class="is-alcoholic"></p>
         </div>
     </div>
-    <div id="detailed-modal"></div>
+    <div id="detailed-modal">
+        <h3 id="drink-name-modal"></h3>
+        <h5 id="" ></h5>
+        <img id="img-modal" 
+            src=""
+            alt=""
+            >
+        <p id="instructions-modal"></p>    
+    </div>
 
     <div>Footer</div>
 </body>
