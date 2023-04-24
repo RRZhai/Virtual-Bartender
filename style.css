@@ -1,30 +1,55 @@
 :root{
     background-color: #F0DBA5;
 }
+#title {
+    text-align: center;
+    font-size: 30px;
+}
 .body {
     font-family: 'Recoleta';
 }
+
+.column{
+    float: left;
+    width: 25%;
+}
+
 .searchForm{
     display: flex;
 }
-.searchForm input[type='text']{
-    
-    width: 20%;
+#searchFilter{
+    width: 30%;
+    background-color: #d6c394;
     border: 1px solid black;
-    width: 80%;
+}
+#searchFilter:hover{
+    background-color: #c29e3a;
+}
+.searchForm input[type='text']{
+    width: 60%;
     background-color: #d6c394;
     font-size: 16px;
-    border-right: none;
+    border: 1px solid black;
 }
+
 .searchForm button{
     float: right;
-    border-left: none;
-    width: 20%;
-    font: 16px;
+    background-color: #d6c394;
+    padding-right: 3px;
+    width: 10%;
+    font: 10px;
     border: 1px solid black;
+}
+.searchForm button:hover{
+    background-color: #c29e3a;
 }
 .searchForm::after {
     content: "";
     clear: both;
     display: table;
+  }
+
+  #searchNav {
+    border: 1px solid black;
+    position: sticky;
   }
