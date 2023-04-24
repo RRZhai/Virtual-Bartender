@@ -7,29 +7,37 @@
 
 .column{
     float: left;
-    width: 20%;
+    width: 25%;
 }
+
 .searchForm{
     display: flex;
 }
+
 .searchForm input[type='text']{
-    
     width: 20%;
     border: 1px solid black;
-    width: 80%;
+    width: 65%;
     background-color: #d6c394;
     font-size: 16px;
-    border-right: none;
+}
+
+.select{
+    float: left;
 }
 .searchForm button{
     float: right;
-    border-left: none;
+    padding-right: 3px;
     width: 20%;
-    font: 16px;
+    font: 10px;
     border: 1px solid black;
 }
 .searchForm::after {
     content: "";
     clear: both;
     display: table;
+  }
+
+  #searchNav {
+    border: 1px solid black;
   }
