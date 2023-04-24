@@ -1,0 +1,30 @@
+:root{
+    background-color: #F0DBA5;
+}
+.body {
+    font-family: 'Recoleta';
+}
+.searchForm{
+    display: flex;
+}
+.searchForm input[type='text']{
+    
+    width: 20%;
+    border: 1px solid black;
+    width: 80%;
+    background-color: #d6c394;
+    font-size: 16px;
+    border-right: none;
+}
+.searchForm button{
+    float: right;
+    border-left: none;
+    width: 20%;
+    font: 16px;
+    border: 1px solid black;
+}
+.searchForm::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
