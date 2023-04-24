@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/src/index.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>just check if this is working</h1>
-</body>
+    <div id="header"></div>
+    <div id="side-panel">
+        <div id="search-section">
+            <div id="search-bar"></div>
+            <div id="filter-section">
+                <div class ="category-filter-header"> 
+                    <!-- each filter option needs a header and a list -->
+                    <ol clsss = "category-filter-list">
+                        <!-- append filter options here -->
+                    </ol>
+                    <!-- clear/select all filter category buttons -->
+                </div>
+                <!-- clear/select all filters buttons -->
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+   
+    <div id="preset-filters">
+        <button class="preset-filter-buttons">Surprise Me!</button>
+        <button class="preset-filter-buttons">Most Popular</button>
+        <button class="preset-filter-buttons">Surprise Me!</button>
+    </div>
+     <h1>just check if this is working</h1>
     <div id="container">
         <h2>Drinks</h2>
         <ul class="drinks">
@@ -18,14 +42,20 @@
                     <img id="drink-img">
                     <p id="drink-recipe"></p>
                 </div>
-            </li>
-            <li class="card">
-                <div>
-                    <h3 id="drink-name2"></h3>
-                    <img id="drink-img2">
-                    <p id="drink-recipe2"></p>
-                </div>
-            </li>
-        </ul>
+    <div id="card-results">
+        <div class="cocktails-cards">
+            <img 
+                class="img-card-list"
+                src=""
+                alt=""
+                >
+            <h3 class="drink-name-card-list"></h3>
+            <h4 class="first-ingredient-card-list"></h4>
+            <p class="is-alcoholic"></p>
+        </div>
     </div>
+    <div id="detailed-modal"></div>
+
+    <div>Footer</div>
+</body>
 </html>
