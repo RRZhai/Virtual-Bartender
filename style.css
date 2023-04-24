@@ -18,11 +18,11 @@
     display: flex;
 }
 #searchFilter{
-    width: 10%;
+    width: 13%;
 }
 .searchForm input[type='text']{
-    border: 1px solid black;
-    width: 67%;
+    
+    width: 66%;
     background-color: #d6c394;
     font-size: 16px;
 }
@@ -30,9 +30,8 @@
 .searchForm button{
     float: right;
     padding-right: 3px;
-    width: 20%;
+    width: 21%;
     font: 10px;
-    border: 1px solid black;
 }
 .searchForm::after {
     content: "";
