@@ -18,20 +18,30 @@
     display: flex;
 }
 #searchFilter{
-    width: 13%;
+    width: 30%;
+    background-color: #d6c394;
+    border: 1px solid black;
+}
+#searchFilter:hover{
+    background-color: #c29e3a;
 }
 .searchForm input[type='text']{
-    
-    width: 66%;
+    width: 60%;
     background-color: #d6c394;
     font-size: 16px;
+    border: 1px solid black;
 }
 
 .searchForm button{
     float: right;
+    background-color: #d6c394;
     padding-right: 3px;
-    width: 21%;
+    width: 10%;
     font: 10px;
+    border: 1px solid black;
+}
+.searchForm button:hover{
+    background-color: #c29e3a;
 }
 .searchForm::after {
     content: "";
@@ -41,4 +51,5 @@
 
   #searchNav {
     border: 1px solid black;
+    position: sticky;
   }
