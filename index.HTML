@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/src/index.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer src="src/apiKey.js"></script>
+    <script defer src = 'src/index.js'></script>
     <title>Document</title>
 </head>
 <body>
+<div id="title">Title Block</div>
+
+<div id='searchNav' class = 'column'>
+    <form class='searchForm'>
+        <input type='text' placeholder='search' name='searchInput'>
+    <select class="form-select" id="searchFilter">
+        <option value=""selected>Select A Filter</option>
+        <option value="Drink Name">Drink Name</option>
+        <option value="Ingredient Name">Ingredient</option>
+    </select>
+        <button type="submit" class ='searchBtn'>
+                 &#128269;
+        </button>
+    </form>
+<div>Filters</div>
+
+<div id = 'search-results'>Search Results
+</div>
+
+</div>
+
+
+   
     <div id="header"></div>
     <div id="side-panel">
         <div id="search-section">
@@ -54,6 +79,16 @@
         <button class="preset-filter-buttons">Most Popular</button>
         <button class="preset-filter-buttons">Surprise Me!</button>
     </div>
+     <h1>just check if this is working</h1>
+    <div id="container">
+        <h2>Drinks</h2>
+        <ul class="drinks">
+            <li class="card">
+                <div>
+                    <h3 id="drink-name"></h3>
+                    <img id="drink-img">
+                    <p id="drink-recipe"></p>
+                </div>
     <div id="card-results">
         <div class="cocktails-cards">
             <img 
