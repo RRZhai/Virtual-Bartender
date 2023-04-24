@@ -4,6 +4,11 @@
 .body {
     font-family: 'Recoleta';
 }
+
+.column{
+    float: left;
+    width: 20%;
+}
 .searchForm{
     display: flex;
 }
