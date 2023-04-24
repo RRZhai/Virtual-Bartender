@@ -1,15 +1,16 @@
 .cards {
-    display: flex;
+    display: absolute;
     padding: 25px 0px;
     list-style: none;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
+    width: 200px
   }
   
 .single-card {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 100%;
+    display: absolute;
+    width: 500px;
+    height: 500px;
     padding: 20px;
     background: var(--white);
     border-radius: 12px;
@@ -18,9 +19,12 @@
     transition: all 0.2s;
 }
 
+
+
 .drink-info {
     position: relative;
+    width: 200px;
     bottom: 100px;
     background-color: grey;
-    font-size: 40px;
+    font-size: 20px;
 }
