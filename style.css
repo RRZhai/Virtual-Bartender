@@ -4,7 +4,9 @@
 .body {
     font-family: 'Recoleta';
 }
-
+.searchForm{
+    display: flex;
+}
 .searchForm input[type='text']{
     
     width: 20%;
@@ -12,6 +14,7 @@
     width: 80%;
     background-color: #d6c394;
     font-size: 16px;
+    border-right: none;
 }
 .searchForm button{
     float: right;
