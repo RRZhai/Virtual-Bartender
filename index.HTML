@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer src="src/apiKey.js"></script>
     <script defer src = 'src/index.js'></script>
     <title>Document</title>
 </head>
@@ -12,8 +13,12 @@
     <div>Title Block</div>
 
     <div id='searchNav'>
-        <input class = 'searchInput' type = 'text' placeholder=search> 
-        <!--&#128269; code for magnifying glass emoji-->
+        <form class='searchForm'>
+            <input type='text' placeholder='search' name='searchInput'>
+            <button type="submit" class ='searchBtn'>
+                 &#128269;
+            </button>
+        </form> 
     </div>
         <div>Filters</div>
 

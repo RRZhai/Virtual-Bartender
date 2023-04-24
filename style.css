@@ -4,15 +4,24 @@
 .body {
     font-family: 'Recoleta';
 }
-.searchNav{
-    overflow: hidden;
-    border: 1px;
-    border-color: black;
+
+.searchForm input[type='text']{
+    
+    width: 20%;
+    border: 1px solid black;
+    width: 80%;
+    background-color: #d6c394;
+    font-size: 16px;
 }
-.searchInput {
-   text-align: right;
-    padding: 4px;
+.searchForm button{
+    float: right;
+    border-left: none;
+    width: 20%;
+    font: 16px;
+    border: 1px solid black;
 }
-.searchNav .searchInput button{
-    background: black;
-}
+.searchForm::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
