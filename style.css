@@ -19,5 +19,8 @@
 }
 
 .drink-info {
-    text-size-adjust: 60px;
+    position: relative;
+    bottom: 100px;
+    background-color: grey;
+    font-size: 40px;
 }
