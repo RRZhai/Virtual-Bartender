@@ -1,3 +1,51 @@
+
+#cards {
+    display: relative;
+}
+
+
+.single-card {
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: start;
+    transition: all 0.2s;
+}
+
+.drink-img {
+    width: 500px
+}
+
+
+
+.drink-info {
+    position: relative;
+    left: 300px;
+    top: -150px;
+    width: 200px;
+    height: relative;
+    background-color:white;
+    opacity: 60%;
+    font-size: 25px;
+    border: 10px;
+}
+
+.receipe {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+}
+
+.ingredient {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+=======
 :root{
     background-color: #F0DBA5;
 }
@@ -81,4 +129,5 @@ display: none;
     width: 80%;
     flex-direction: column;
     justify-content: center;
+
 }
