@@ -20,8 +20,6 @@
     width: 500px
 }
 
-
-
 .drink-info {
     position: relative;
     left: 300px;
@@ -33,21 +31,18 @@
     font-size: 25px;
     border: 10px;
 }
-
 .receipe {
     position:relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
 }
-
 .ingredient {
     position:relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
 }
-
 #title {
     text-align: center;
     font-size: 30px;
@@ -57,10 +52,9 @@
     display: flex;
 }
 
-
 .column{
     float: left;
-    width:min-content;
+    width:max-content;
     border: 1px solid black;
     position: sticky;
 }
@@ -79,7 +73,7 @@
     margin-left: 0;
     margin-right: 0;
     display: inline-block;
-    width: relative%;
+    
     background-color: #d6c394;
     border: 1px solid black;
     
