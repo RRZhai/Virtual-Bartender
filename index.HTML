@@ -12,29 +12,24 @@
   <body>
     <div id="title">Title Block</div>
 
-    <!-- I think these two can be removed .ren -->
-    <!-- <div>Filters</div>
-<div id='search-results'>Search Results -->
-    <!--  -->
+<div id='searchNav' class = 'column'>
+    <form id= 'searchForm' >
+        <input type='text' placeholder='search' id='searchInput'>
+    <select class="form-select" id="searchFilter">
+        <option id ='drinkDD' value="Drink">Drink Name</option>
+        <option id = 'ingrDD' value="Ingredient">Ingredient</option>
+    </select>
+        <button type="submit" class ='searchBtn'>
+                 &#128269;
+        </button>
+    </form>
+<div>Filters</div>
 
-   
 
-    <div id="header"></div> 
-    <!-- What's this? -->
+
+    <div id="header"></div>
+
     <div id="side-panel">
-       <div id="searchNav" class="column">
-      <!-- do we need column class if this is now in the side-panel? -->
-      <form class="searchForm">
-        <input type="text" placeholder="search" name="searchInput" />
-        <select class="form-select" id="searchFilter">
-          <option value="" selected>Select A Filter</option>
-          <option value="Drink Name">Drink Name</option>
-          <option value="Ingredient Name">Ingredient</option>
-        </select>
-        <button type="submit" class="searchBtn">&#128269;</button>
-      </form>
-    </div>
-    <br>
       <div id="preset-filters">
         <button id="random-filter-btn" value="randomselection" class="preset-filter-buttons">
           Surprise Me!
@@ -116,5 +111,6 @@
     <!-- modal end -->
         <div id="container">
         <h2>Drinks</h2>
+
   </body>
 </html>

@@ -1,97 +1,119 @@
-// global variable
-const container = document.getElementById("container");
+
+// LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
+//////global constants/////
+
+//search Bar/Nav constants (nolan)
+const entireSearchNav = document.querySelector('#searchNav')
+const formSearchInput = document.querySelector('#searchInput')
+const searchFilterDD = document.querySelector('#searchFilter')
+const ingrFilter = document.querySelector('#ingrFilter')
+const nameFilter = document.querySelector('#nameFilter')
+const searchForm = document.querySelector('#searchForm')
+
+//Side panel constants (ren)
+const sidePanelContainer = document.getElementById("filter-section");
+//**  const presetFilters = document.getElementById("filterPresets")
+const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
+const spiritFtrLst = document.getElementById("spirit-filter-list");
+const drinkTypeFtrLst = document.getElementById("type-filter-list");
+const spiritExpandBtn = document.getElementById("spirit-expand-btn");
+
+//card constants (shiyao)
+const container = document.querySelector('#container')
+
+//functions
+
+//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
+//need to figure out why
+
+
+const userSearchByName = () => {
+    input = (formSearchInput.value)
+    URLinput = encodeURI(input.replace(' ','_'));
+   // console.log(URLinput)
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
+    fetch(searchNameUrl)
+    .then(res => res.json())
+    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+};
+const userSearchByIngredient = () => {
+    input = (formSearchInput.value)
+    URLinput = encodeURI(input.replace(' ','_'));
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?i=' + URLinput
+    console.log(URLinput)
+    fetch(searchNameUrl)
+    .then(res => res.json())
+    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+}
 
 const fetchDrink = () => {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then((resp) => resp.json())
     // .then(drinkData => {debugger})
-    .then((drinkData) => {
-      drinkData.drinks.forEach((drink) => {
-        renderDrink(drink);
-        // ingArr(drink)
-      });
-    });
-};
-fetchDrink();
 
-const presetFilterBtns = document.querySelector(".preset-filter-btn");
-presetFilterBtns.addEventListener("click", (e) => fetchPresets(e));
+    .then(drinkData => {
+        drinkData.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+fetchDrink()
+const renderDrink = drink => {
+    const drinkDtl = document.createElement('div')
+    drinkDtl.className = 'single-card'
+    container.appendChild(drinkDtl)
+    const drinkImg = document.createElement('img')
+    drinkImg.src = drink.strDrinkThumb
+    drinkImg.className = 'drink-img'
+    drinkDtl.appendChild(drinkImg)
+    
 
-const fetchPresets = (e) => {
-  debugger;
-  const presetName = e.target.value;
-  fetch(`https://www.thecocktaildb.com/api/json/v2/9973533/${presetName}.php`)
-    .then((res) => res.json())
-    .then((drinkData) =>
-      drinkData.drinks.forEach((drink) => renderDrink(drink))
-    );
-};
+    const drinkInfo = document.createElement('div')
+    drinkInfo.className = "drink-info"
+    drinkDtl.appendChild(drinkInfo)
 
-const renderDrink = (drink) => {
-  const cards = document.createElement("div");
-  cards.className = "cards";
-  container.appendChild(cards);
-  //We can remove the above because we'll append to the existing HTML section
-  const drinkDtl = document.createElement("div");
-  drinkDtl.className = "single-card";
-  cards.appendChild(drinkDtl);
-  //Can we change this variable to be about a single card like drinkCard?
-  const drinkImg = document.createElement("img");
-  drinkImg.className = "drink-img";
-  drinkDtl.appendChild(drinkImg);
-  const drinkInfo = document.createElement("div");
-  drinkInfo.className = "drink-info";
-  drinkDtl.appendChild(drinkInfo);
-  const drinkName = document.createElement("div");
-  drinkName.className = "drink-name";
-  drinkInfo.appendChild(drinkName);
-  //let's make this a header within the card instead of it's own div
-  const drinkType = document.createElement("li");
-  const drinkIng = document.createElement("li");
-  drinkInfo.appendChild(drinkType);
-  drinkInfo.appendChild(drinkIng);
-  //these can be p's which just have less default formatting
-  drinkImg.src = drink.strDrinkThumb;
-  drinkName.textContent = drink.strDrink;
-  drinkType.textContent = drink.strCategory;
-  drinkIng.textContent = drink.strIngredient1;
-  //
+    const drinkName = document.createElement('div')
+    drinkName.className = 'drink-name'
+    drinkInfo.appendChild(drinkName)
 
-  // Let's separate these fucntions and use "drink" as the argument
-  cards.addEventListener("click", (e) => {
-    const drinkIngredient = document.createElement("div");
-    drinkIngredient.className = "ingredient";
-    const drinkReceipe = document.createElement("p");
-    drinkReceipe.className = "receipe";
-    drinkInfo.after(drinkIngredient);
-    drinkInfo.after(drinkReceipe);
-    drinkReceipe.innerText = drink.strInstructions;
-    drinkIngredient.innerText = `${drink.strMeasure1} ${drink.strIngredient1}, 
-        ${drink.strMeasure2} ${drink.strIngredient2}, 
-        ${drink.strMeasure3} ${drink.strIngredient3}, 
-        ${drink.strMeasure4} ${drink.strIngredient4}, 
-        ${drink.strMeasure5} ${drink.strIngredient4}`;
-  });
-};
+    const drinkType = document.createElement('li')
+    const drinkIng = document.createElement('li')
 
-// const IngArr = (drink) => {
-//     drink.filter(() => {
+    drinkInfo.appendChild(drinkType)
+    drinkInfo.appendChild(drinkIng)
 
-//     })
-// }
+    drinkImg.src = drink.strDrinkThumb
+    drinkName.textContent = drink.strDrink
+    drinkType.textContent = drink.strCategory
+    drinkIng.textContent = drink.strIngredient1
 
-const entireSearchNav = document.getElementById("searchNav");
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
-const dropDown = document.getElementById("searchFilter");
+    drinkImg.addEventListener('click', () => handleDrink(drink))
+}
 
-//Side panel constants
-const sidePanelContainer = document.getElementById("filter-section");
-// const presetFilters = document.getElementById("filterPresets")
-const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
-const spiritFtrLst = document.getElementById("spirit-filter-list");
-const drinkTypeFtrLst = document.getElementById("type-filter-list");
-const spiritExpandBtn = document.getElementById("spirit-expand-btn");
+const handleDrink = (drink) => {
+  const drinkIngredient = document.createElement('div')
+  drinkIngredient.className = "ingredient"
+  const drinkReceipe = document.createElement('p')
+  drinkReceipe.className = 'receipe'
+  // drink.after(drinkIngredient)
+  // drink.after(drinkReceipe)
+  drinkReceipe.innerText = drink.strInstructions
+  drinkIngredient.innerText = ingAndMea(drink)
+  // `${drink.strMeasure1} ${drink.strIngredient1}, 
+  // ${drink.strMeasure2} ${drink.strIngredient2}, 
+  // ${drink.strMeasure3} ${drink.strIngredient3}, 
+  // ${drink.strMeasure4} ${drink.strIngredient4}, 
+  // ${drink.strMeasure5} ${drink.strIngredient4}`
+}
+
+const ingAndMea = (drink) => {
+    const ingreArr = Object.keys(drink).filter(singleIng => {
+        return singleIng[12] === 't'
+    })
+    return ingreArr
+}
+
+
 
 //search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
 //order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
@@ -110,6 +132,35 @@ drinkCard.classList.add(ingStr1(ingStr2));
 
 const allFilterOptions = document.getElementsByClassName("filter-input");
 allFilterOptions.addEventListener("change", e, handleFilter(e));
+//Initial Page fetch with 10 random drinks for
+function fetchRandom() {
+  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
+    .then((res) => res.json())
+    .then((randomDrinksArray) =>
+      randomDrinksArray.forEach((oneRandomDrink) =>
+        renderOneDrinkCard(oneRandomDrink)
+      )
+    );
+}
+
+//** 
+//function renderOneDrinkCard(drinkObj) {}
+//** spiritExpandBtn.addEventListener(
+//   "click",
+//   e.target.child.classList.toggle("hidden")
+// );
+
+//*** spiritExpandBtn.appendChild(spiritFtrLst);
+
+
+///event listeners:
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    
+    container.innerHTML = ''
+    userSearchByName()
+    
+})
 
 function handleFilter(returnArray) {
   //can I get this to find if the value is contained in ingredients

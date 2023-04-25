@@ -1,12 +1,21 @@
 /* Global */
 
-.body {
-    font-family: 'Recoleta';
-    display: flexbox;
+:root{
+    background-color: #F0DBA5;
 }
-
-
-/* Header */
+#cards {
+    display: relative;
+}
+.single-card {
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: start;
+    transition: all 0.2s;
+}
 
 #title {
     text-align: center;
@@ -26,9 +35,43 @@
 
 /* Side-Bar Search*/
 
+.drink-info {
+    position: relative;
+    left: 300px;
+    top: -150px;
+    width: 200px;
+    height: relative;
+    background-color:white;
+    opacity: 60%;
+    font-size: 25px;
+    border: 10px;
+}
+.receipe {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+}
+.ingredient {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+}
+#title {
+    text-align: center;
+    font-size: 30px;
+}
+.body {
+    font-family: 'Recoleta';
+    display: flex;
+}
+
 .column {
     float: left;
-    width: 25%;
+    width:max-content;
+    border: 1px solid black;
+    position: sticky;
 }
 
 .searchForm {
@@ -37,23 +80,40 @@
 
 #searchFilter {
     width: 30%;
+#searchForm{
+    display: inline-block;
+    background-color: #d6c394;
+    font-size: 16px;
+    border: 1px solid black;
+    margin: 0;
+}
+.searchBtn{
+    margin:0;
+}
+#searchFilter{
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+    
     background-color: #d6c394;
     border: 1px solid black;
+    
 }
 
 #searchFilter:hover {
     background-color: #c29e3a;
 }
 
-.searchForm input[type='text'] {
-    width: 60%;
+
+.searchForm input[type='text']{
+    display: inline-block;
     background-color: #d6c394;
     font-size: 16px;
     border: 1px solid black;
 }
 
-.searchForm button {
-    float: right;
+.searchForm button{
+    display: inline-block;
     background-color: #d6c394;
     padding-right: 3px;
     width: 10%;
@@ -96,6 +156,7 @@ display: none;
     justify-content: center;
 
 }
+
 
 
 /* Card Section */
@@ -155,6 +216,7 @@ display: none;
 
 
 /* Not Categorized */
+
 
 
 
