@@ -1,9 +1,10 @@
 
+:root{
+    background-color: #F0DBA5;
+}
 #cards {
     display: relative;
 }
-
-
 .single-card {
     width: 500px;
     height: 500px;
@@ -19,8 +20,6 @@
     width: 500px
 }
 
-
-
 .drink-info {
     position: relative;
     left: 300px;
@@ -32,22 +31,17 @@
     font-size: 25px;
     border: 10px;
 }
-
 .receipe {
     position:relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
 }
-
 .ingredient {
     position:relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
-=======
-:root{
-    background-color: #F0DBA5;
 }
 #title {
     text-align: center;
@@ -60,29 +54,42 @@
 
 .column{
     float: left;
-    width: 25%;
+    width:max-content;
+    border: 1px solid black;
+    position: sticky;
 }
 
-.searchForm{
-    display: flex;
+#searchForm{
+    display: inline-block;
+    background-color: #d6c394;
+    font-size: 16px;
+    border: 1px solid black;
+    margin: 0;
+}
+.searchBtn{
+    margin:0;
 }
 #searchFilter{
-    width: 30%;
+    margin-left: 0;
+    margin-right: 0;
+    display: inline-block;
+    
     background-color: #d6c394;
     border: 1px solid black;
+    
 }
 #searchFilter:hover{
     background-color: #c29e3a;
 }
 .searchForm input[type='text']{
-    width: 60%;
+    display: inline-block;
     background-color: #d6c394;
     font-size: 16px;
     border: 1px solid black;
 }
 
 .searchForm button{
-    float: right;
+    display: inline-block;
     background-color: #d6c394;
     padding-right: 3px;
     width: 10%;
