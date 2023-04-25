@@ -1,4 +1,4 @@
-.cards {
+#cards {
     display: relative;
 }
 
@@ -30,4 +30,18 @@
     opacity: 60%;
     font-size: 25px;
     border: 10px;
+}
+
+.receipe {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+}
+
+.ingredient {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
 }
