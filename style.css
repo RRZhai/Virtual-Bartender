@@ -1,8 +1,107 @@
+/* Global */
 
+.body {
+    font-family: 'Recoleta';
+    display: flexbox;
+}
+
+
+/* Header */
+
+#title {
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Side-Panel */
+
+#side-panel {
+    width: 30%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+/* Side-Bar Search*/
+
+.column {
+    float: left;
+    width: 25%;
+}
+
+.searchForm {
+    display: flex;
+}
+
+#searchFilter {
+    width: 30%;
+    background-color: #d6c394;
+    border: 1px solid black;
+}
+
+#searchFilter:hover {
+    background-color: #c29e3a;
+}
+
+.searchForm input[type='text'] {
+    width: 60%;
+    background-color: #d6c394;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+.searchForm button {
+    float: right;
+    background-color: #d6c394;
+    padding-right: 3px;
+    width: 10%;
+    font: 10px;
+    border: 1px solid black;
+}
+
+.searchForm button:hover {
+    background-color: #c29e3a;
+}
+
+.searchForm::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#searchNav {
+    border: 1px solid black;
+    position: sticky;
+}
+
+/* #filter-section */
+
+li {
+    list-style-type: none;
+    display: flex;
+}
+
+/* .hidden {
+display: none;
+  } */
+
+.single-filter {
+    border: black;
+    border-width: 5px;
+    border-radius: 15px;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+/* Card Section */
 #cards {
     display: relative;
 }
-
 
 .single-card {
     width: 500px;
@@ -19,115 +118,45 @@
     width: 500px
 }
 
-
-
 .drink-info {
     position: relative;
     left: 300px;
     top: -150px;
     width: 200px;
     height: relative;
-    background-color:white;
+    background-color: white;
     opacity: 60%;
     font-size: 25px;
     border: 10px;
 }
 
 .receipe {
-    position:relative;
+    position: relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
 }
 
 .ingredient {
-    position:relative;
+    position: relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
-=======
-:root{
-    background-color: #F0DBA5;
-}
-#title {
-    text-align: center;
-    font-size: 30px;
-}
-.body {
-    font-family: 'Recoleta';
-    display: flex;
 }
 
-.column{
-    float: left;
-    width: 25%;
-}
 
-.searchForm{
-    display: flex;
-}
-#searchFilter{
-    width: 30%;
-    background-color: #d6c394;
-    border: 1px solid black;
-}
-#searchFilter:hover{
-    background-color: #c29e3a;
-}
-.searchForm input[type='text']{
-    width: 60%;
-    background-color: #d6c394;
-    font-size: 16px;
-    border: 1px solid black;
-}
+/* Modal */
 
-.searchForm button{
-    float: right;
-    background-color: #d6c394;
-    padding-right: 3px;
-    width: 10%;
-    font: 10px;
-    border: 1px solid black;
-}
-.searchForm button:hover{
-    background-color: #c29e3a;
-}
-.searchForm::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
 
-  #searchNav {
-    border: 1px solid black;
-    position: sticky;
-  }
 
-#side-panel {
-    width: 30%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column
-    ;
-    
-}
 
-#filter-section li{
-    list-style-type: none;
-    display: flex;
-    
-  }
 
-/* .hidden {
-display: none;
-  } */
 
-.single-filter {
-    border: black;
-    border-width: 5px;
-    border-radius: 15px;
-    width: 80%;
-    flex-direction: column;
-    justify-content: center;
 
-}
+
+/* Not Categorized */
+
+
+
+
+
