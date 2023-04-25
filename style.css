@@ -9,10 +9,11 @@
     font-family: 'Recoleta';
 }
 
-.column{
+/* .column{
     float: left;
     width: 25%;
-}
+commented out to format side bar
+} */
 
 .searchForm{
     display: flex;
@@ -53,3 +54,10 @@
     border: 1px solid black;
     position: sticky;
   }
+
+  #side-panel {
+    display: flexbox;
+    border-color: black;
+    border-width: 1px;
+  }
+

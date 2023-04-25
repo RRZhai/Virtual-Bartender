@@ -12,41 +12,54 @@
 <body>
 <div id="title">Title Block</div>
 
-<div id='searchNav' class = 'column'>
-    <form class='searchForm'>
-        <input type='text' placeholder='search' name='searchInput'>
-    <select class="form-select" id="searchFilter">
-        <option value=""selected>Select A Filter</option>
-        <option value="Drink Name">Drink Name</option>
-        <option value="Ingredient Name">Ingredient</option>
-    </select>
-        <button type="submit" class ='searchBtn'>
-                 &#128269;
-        </button>
-    </form>
+
+<!-- I think these two can be removed .ren -->
 <div>Filters</div>
+<div id='search-results'>Search Results
+<!--  -->
 
-<div id = 'search-results'>Search Results
 </div>
-
-</div>
-
-
-   
     <div id="header"></div>
     <div id="side-panel">
-        <div id="search-section">
-            <div id="search-bar"></div>
+        <div id="preset-filters">
+            <button class="preset-filter-buttons">Surprise Me!</button>
+            <button class="preset-filter-buttons">Most Popular</button>
+            <button class="preset-filter-buttons">New Recipies</button>
+        </div>
+        <div id='searchNav' class='column'>
+            <!-- do we need column class if this is now in the side-panel? -->
+            <form class='searchForm'>
+                <input type='text' placeholder='search' name='searchInput'>
+                <select class="form-select" id="searchFilter">
+                    <option value="" selected>Select A Filter</option>
+                    <option value="Drink Name">Drink Name</option>
+                    <option value="Ingredient Name">Ingredient</option>
+                </select>
+                <button type="submit" class='searchBtn'>
+                    &#128269;
+                </button>
+            </form>
+        </div>
             <div id="filter-section">
-                <div class ="category-filter-header"> 
-                    <h3 id="has-alcohol-header">Drink Type</h3>
-                    <ul clsss="alcohol-content-filter-list" id="alcohol-content-filter-list">
+                <div class="single-filter">
+                    <div class="header-single-filter"> 
+                        <h3 id="has-alcohol-header">Drink Type</h3>
+                        <button class="expand-collapse-filter">+</button>
+                        <button class="clear-filter-btns">clear filter</button>
+                    </div>
+                    <ul class="alcohol-content-filter-list" id="alcohol-content-filter-list">
                         <li><input type="checkbox" value="alcoholic">Alcoholic</li>
                         <li><input type="checkbox" value="non-alcoholic">Non-Alcoholic</li>
                         <li><input type="checkbox" value="aslcohol-optional">Alcohol Optional</li>
                     </ul>
-                    <h3 id="spirit-filter-header">Base Spirits</h3>
-                    <ul clsss = "spirit-filter-list" id="spirit-filter-list">
+                </div>
+                <div class="single-filter">
+                    <div class="header-single-filter">
+                        <h3 id="spirit-filter-header">Base Spirits</h3>
+                        <button class="expand-collapse-filter">+</button>
+                        <button class="clear-filter-btns">clear filter</button>
+                    </div>
+                    <ul class = "spirit-filter-list" id="spirit-filter-list">
                         <li><input type="checkbox" value="vodka">Vodka</li>
                         <li><input type="checkbox" value="whiskey">Whiskey</li>
                         <li><input type="checkbox" value="rum">Rum</li>
@@ -57,8 +70,14 @@
                         <li><input type="checkbox" value="brandy">Brandy</li>
                         <li><input type="checkbox" value="schnapps">Schnapps</li>
                     </ul>
-                    <h3 id="type-filter-header">Drink Type</h3>
-                    <ul clsss="type-filter-list" id="type-filter-list">
+                </div>    
+                <div class="single-filter">
+                    <div class="header-single-filter">
+                        <h3 id="type-filter-header">Drink Type</h3>
+                        <button class="expand-collapse-filter">+</button>
+                        <button class="clear-filter-btns">clear filter</button>
+                    </div>
+                    <ul class="type-filter-list" id="type-filter-list">
                         <li><input type="checkbox" value="cocktail">Cocktail</li>
                         <li><input type="checkbox" value="shot">Shot</li>
                         <li><input type="checkbox" value="punch">Punch</li>
@@ -68,21 +87,19 @@
                         <!-- clear/select all filter category buttons -->
                 </div>
                 <!-- clear/select all filters buttons -->
-            </div>
-            </div>
+            
         </div>
     </div>
     </div>
    
-    <div id="preset-filters">
-        <button class="preset-filter-buttons">Surprise Me!</button>
-        <button class="preset-filter-buttons">Most Popular</button>
-        <button class="preset-filter-buttons">Surprise Me!</button>
-    </div>
+
     
+
      <h1>just check if this is working</h1>
     <div id="container">
         <h2>Drinks</h2>
+        <!-- can h2 be removed? .ren-->
+        <!-- let's build the cards as part of a function so the number of cards can fluctuate .ren -->
         <ul class="drinks">
             <li class="card">
                 <div>
@@ -90,18 +107,8 @@
                     <img id="drink-img">
                     <p id="drink-recipe"></p>
                 </div>
-    <div id="card-results">
-        <div class="cocktails-cards">
-            <img 
-                class="img-card-list"
-                src=""
-                alt=""
-                >
-            <h3 class="drink-name-card-list"></h3>
-            <h4 class="first-ingredient-card-list"></h4>
-            <p class="is-alcoholic"></p>
-        </div>
-    </div>
+
+    <!-- modal start -->
     <div id="detailed-modal">
         <h3 id="drink-name-modal"></h3>
         <h5 id="" ></h5>
@@ -111,7 +118,7 @@
             >
         <p id="instructions-modal"></p>    
     </div>
-
+<!-- modal end -->
     <div>Footer</div>
 </body>
 </html>
