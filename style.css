@@ -7,6 +7,7 @@
 }
 .body {
     font-family: 'Recoleta';
+    display: flex;
 }
 
 .column{
@@ -53,3 +54,31 @@
     border: 1px solid black;
     position: sticky;
   }
+
+#side-panel {
+    width: 30%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column
+    ;
+    
+}
+
+#filter-section li{
+    list-style-type: none;
+    display: flex;
+    
+  }
+
+/* .hidden {
+display: none;
+  } */
+
+.single-filter {
+    border: black;
+    border-width: 5px;
+    border-radius: 15px;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+}
