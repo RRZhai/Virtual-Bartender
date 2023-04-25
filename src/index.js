@@ -9,7 +9,6 @@ const fetchDrink = () => {
     .then(drinkData => {
         drinkData.drinks.forEach(drink => {
             renderDrink(drink)
-            // ingArr(drink)
         })
     })
 }
@@ -39,7 +38,7 @@ const renderDrink = drink => {
     drinkName.textContent = drink.strDrink
     drinkType.textContent = drink.strCategory
     drinkIng.textContent = drink.strIngredient1
-    cards.addEventListener('click', (e) => {
+    cards.addEventListener('click', () => {
         const drinkIngredient = document.createElement('div')
         drinkIngredient.className = "ingredient"
         const drinkReceipe = document.createElement('p')
@@ -47,16 +46,18 @@ const renderDrink = drink => {
         drinkInfo.after(drinkIngredient)
         drinkInfo.after(drinkReceipe)
         drinkReceipe.innerText = drink.strInstructions
-        drinkIngredient.innerText = `${drink.strMeasure1} ${drink.strIngredient1}, 
-        ${drink.strMeasure2} ${drink.strIngredient2}, 
-        ${drink.strMeasure3} ${drink.strIngredient3}, 
-        ${drink.strMeasure4} ${drink.strIngredient4}, 
-        ${drink.strMeasure5} ${drink.strIngredient4}` 
+        drinkIngredient.innerText = ingAndMea(drink)
+        // `${drink.strMeasure1} ${drink.strIngredient1}, 
+        // ${drink.strMeasure2} ${drink.strIngredient2}, 
+        // ${drink.strMeasure3} ${drink.strIngredient3}, 
+        // ${drink.strMeasure4} ${drink.strIngredient4}, 
+        // ${drink.strMeasure5} ${drink.strIngredient4}` 
     })
 }
 
-// const IngArr = (drink) => {
-//     drink.filter(() => {
-
-//     })
-// }
+const ingAndMea = (drink) => {
+    const ingreArr = Object.keys(drink).filter(singleIng => {
+        return singleIng[12] === 't'
+    })
+    return ingreArr
+}
