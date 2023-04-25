@@ -1,14 +1,9 @@
 .cards {
-    display: absolute;
-    padding: 25px 0px;
-    list-style: none;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    width: 200px
-  }
-  
+    display: relative;
+}
+
+
 .single-card {
-    display: absolute;
     width: 500px;
     height: 500px;
     padding: 20px;
@@ -19,12 +14,20 @@
     transition: all 0.2s;
 }
 
+.drink-img {
+    width: 500px
+}
+
 
 
 .drink-info {
     position: relative;
+    left: 300px;
+    top: -150px;
     width: 200px;
-    bottom: 100px;
-    background-color: grey;
-    font-size: 20px;
+    height: relative;
+    background-color:white;
+    opacity: 60%;
+    font-size: 25px;
+    border: 10px;
 }
