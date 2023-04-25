@@ -1,7 +1,7 @@
 const entireSearchNav = document.getElementById('searchNav')
-const searchForm = document.getElementById('searchForm')
-const searchInput = document.getElementById('searchInput')
-const dropDown = document.getElementById('searchFilter')
+const formSearch = document.getElementById('searchForm')
+const inputSearch = document.getElementById('searchInput')
+const dropDownSearch = document.getElementById('searchFilter')
 
 
 //search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
