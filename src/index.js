@@ -16,12 +16,9 @@ const fetchDrink = () => {
 fetchDrink()
 
 const renderDrink = drink => {
-    const cards = document.createElement('div')
-    cards.className = 'cards'
-    container.appendChild(cards)
     const drinkDtl = document.createElement('div')
     drinkDtl.className = 'single-card'
-    cards.appendChild(drinkDtl)
+    container.appendChild(drinkDtl)
     const drinkImg = document.createElement('img')
     drinkImg.className = 'drink-img'
     drinkDtl.appendChild(drinkImg)
@@ -39,21 +36,23 @@ const renderDrink = drink => {
     drinkName.textContent = drink.strDrink
     drinkType.textContent = drink.strCategory
     drinkIng.textContent = drink.strIngredient1
-    cards.addEventListener('click', () => {
-        const drinkIngredient = document.createElement('div')
-        drinkIngredient.className = "ingredient"
-        const drinkReceipe = document.createElement('p')
-        drinkReceipe.className = 'receipe'
-        drinkInfo.after(drinkIngredient)
-        drinkInfo.after(drinkReceipe)
-        drinkReceipe.innerText = drink.strInstructions
-        drinkIngredient.innerText = ingAndMea(drink)
-        // `${drink.strMeasure1} ${drink.strIngredient1}, 
-        // ${drink.strMeasure2} ${drink.strIngredient2}, 
-        // ${drink.strMeasure3} ${drink.strIngredient3}, 
-        // ${drink.strMeasure4} ${drink.strIngredient4}, 
-        // ${drink.strMeasure5} ${drink.strIngredient4}` 
-    })
+    drinkImg.addEventListener('click', () => handleDrink(drink))
+}
+
+const handleDrink = (drink) => {
+  const drinkIngredient = document.createElement('div')
+  drinkIngredient.className = "ingredient"
+  const drinkReceipe = document.createElement('p')
+  drinkReceipe.className = 'receipe'
+  // drink.after(drinkIngredient)
+  // drink.after(drinkReceipe)
+  drinkReceipe.innerText = drink.strInstructions
+  drinkIngredient.innerText = ingAndMea(drink)
+  // `${drink.strMeasure1} ${drink.strIngredient1}, 
+  // ${drink.strMeasure2} ${drink.strIngredient2}, 
+  // ${drink.strMeasure3} ${drink.strIngredient3}, 
+  // ${drink.strMeasure4} ${drink.strIngredient4}, 
+  // ${drink.strMeasure5} ${drink.strIngredient4}`
 }
 
 const ingAndMea = (drink) => {
