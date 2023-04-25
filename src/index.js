@@ -8,9 +8,13 @@ fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
   .then((res) => res.json())
   .then((randomDrinksArray) =>
     randomDrinksArray.forEach((oneRandomDrink) =>
-      renderDrinkCard(oneRandomDrink)
+      renderOneDrinkCard(oneRandomDrink)
     )
   );
+
+function renderOneDrinkCard(drinkObj) {
+    
+}
 
 //search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
 //order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
