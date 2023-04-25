@@ -1,55 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer src="src/apiKey.js"></script>
+
     <script defer src="src/index.js"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div id="title">Title Block</div>
+
+    <!-- I think these two can be removed .ren -->
+    <!-- <div>Filters</div>
+<div id='search-results'>Search Results -->
+    <!--  -->
+
+    <div id="searchNav" class="column">
+      <!-- do we need column class if this is now in the side-panel? -->
+      <form class="searchForm">
+        <input type="text" placeholder="search" name="searchInput" />
+        <select class="form-select" id="searchFilter">
+          <option value="" selected>Select A Filter</option>
+          <option value="Drink Name">Drink Name</option>
+          <option value="Ingredient Name">Ingredient</option>
+        </select>
+        <button type="submit" class="searchBtn">&#128269;</button>
+      </form>
+    </div>
+
     <div id="header"></div>
+
     <div id="side-panel">
-        <div id="search-section">
-            <div id="search-bar"></div>
-            <div id="filter-section">
-                <div class ="category-filter-header"> 
-                    <!-- each filter option needs a header and a list -->
-                    <ol clsss = "category-filter-list">
-                        <!-- append filter options here -->
-                    </ol>
-                    <!-- clear/select all filter category buttons -->
-                </div>
-                <!-- clear/select all filters buttons -->
-            </div>
-            </div>
+      <div id="preset-filters">
+        <button id="random-filter-btn" value="" class="preset-filter-buttons">
+          Surprise Me!
+        </button>
+        <button id="most-popular-btn" value="" class="preset-filter-buttons">
+          Most Popular
+        </button>
+        <button id="new-recipies-btn" value="" class="preset-filter-buttons">
+          New Recipies
+        </button>
+      </div>
+      <div id="filter-section">
+        <div id="alcohol-content-filter" class="single-filter">
+          <div class="header-single-filter">
+            <h3 id="alcohol-content-header">Alcoholic?</h3>
+            <button class="expand-collapse-filter">+</button>
+            <button class="clear-filter-btns">clear</button>
+          </div>
+          <ul
+            id="alcohol-content-filter-list"
+            class="single-filter-list hidden"
+          >
+            <li><input type="checkbox" value="alcoholic" />Alcoholic</li>
+            <li>
+              <input type="checkbox" value="non-alcoholic" />Non-Alcoholic
+            </li>
+            <li>
+              <input type="checkbox" value="aslcohol-optional" />Alcohol
+              Optional
+            </li>
+          </ul>
         </div>
+        <div id="spirit-filter" class="single-filter">
+          <div class="header-single-filter">
+            <h3 id="spirit-filter-header">Base Spirits</h3>
+            <button id="spirit-expand-btn" class="expand-collapse-filter">+
+                <div>
+                <ul id="spirit-filter-list" class="single-filter-list hidden">
+                    <li><input type="checkbox" value="vodka" />Vodka</li>
+                    <li><input type="checkbox" value="whiskey" />Whiskey</li>
+                    <li><input type="checkbox" value="rum" />Rum</li>
+                    <li><input type="checkbox" value="gin" />Gin</li>
+                    <li><input type="checkbox" value="scotch" />Scotch</li>
+                    <li><input type="checkbox" value="tequila" />Tequila</li>
+                    <li><input type="checkbox" value="bourbon" />Bourbon</li>
+                    <li><input type="checkbox" value="brandy" />Brandy</li>
+                    <li><input type="checkbox" value="schnapps" />Schnapps</li>
+                </ul>
+            </div>
+    </button>
+            <button class="clear-filter-btns">clear</button>
+          </div>
+        </div>
+        <div id="type-filter" class="single-filter">
+          <div class="header-single-filter">
+            <h3 id="type-filter-header">Drink Type</h3>
+            <button class="expand-collapse-filter">+</button>
+            <button class="clear-filter-btns">clear</button>
+          </div>
+          <ul id="type-filter-list" class="single-filter-list hidden">
+            <li><input type="checkbox" value="cocktail" />Cocktail</li>
+            <li><input type="checkbox" value="shot" />Shot</li>
+            <li><input type="checkbox" value="punch" />Punch</li>
+            <li><input type="checkbox" value="other" />Other</li>
+            <!-- need to find out how to bucket into these categories-->
+          </ul>
+          <!-- clear/select all filter category buttons -->
+        </div>
+        <!-- clear/select all filters buttons -->
+      </div>
     </div>
-    </div>
-   
-    <div id="preset-filters">
-        <button class="preset-filter-buttons">Surprise Me!</button>
-        <button class="preset-filter-buttons">Most Popular</button>
-        <button class="preset-filter-buttons">Surprise Me!</button>
-    </div>
+
+    
      <h1>just check if this is working</h1>
     <div id="container">
         <h2>Drinks</h2>
-    <div id="card-results">
-        <div class="cocktails-cards">
-            <img 
-                class="img-card-list"
-                src=""
-                alt=""
-                >
-            <h3 class="drink-name-card-list"></h3>
-            <h4 class="first-ingredient-card-list"></h4>
-            <p class="is-alcoholic"></p>
-        </div>
-    </div>
-    <div id="detailed-modal"></div>
 
+    <!-- modal start -->
+    <div id="detailed-modal">
+      <h3 id="drink-name-modal"></h3>
+      <h5 id=""></h5>
+      <img id="img-modal" src="" alt="" />
+      <p id="instructions-modal"></p>
+    </div>
+    <!-- modal end -->
     <div>Footer</div>
-</body>
+  </body>
 </html>
