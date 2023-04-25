@@ -9,15 +9,18 @@ const sidePanelContainer = document.getElementById("filter-section");
 const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
 const spiritFtrLst = document.getElementById("spirit-filter-list");
 const drinkTypeFtrLst = document.getElementById("type-filter-list");
+const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
-//Initial Page fetch with 10 random drinks
-fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-  .then((res) => res.json())
-  .then((randomDrinksArray) =>
-    randomDrinksArray.forEach((oneRandomDrink) =>
-      renderOneDrinkCard(oneRandomDrink)
-    )
-  );
+//Initial Page fetch with 10 random drinks for
+function retchRandom() {
+  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
+    .then((res) => res.json())
+    .then((randomDrinksArray) =>
+      randomDrinksArray.forEach((oneRandomDrink) =>
+        renderOneDrinkCard(oneRandomDrink)
+      )
+    );
+}
 
 function renderOneDrinkCard(drinkObj) {}
 
@@ -31,4 +34,9 @@ const fetch4DrinkIngredients = () => {
   fetch("").then().then();
 };
 
-hasAlcoholFtrLst.addEventListener("click", e.target.classList.toggle("hidden"));
+// spiritExpandBtn.addEventListener(
+//   "click",
+//   e.target.child.classList.toggle("hidden")
+// );
+
+spiritExpandBtn.appendChild(spiritFtrLst);
