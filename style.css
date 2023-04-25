@@ -1,9 +1,10 @@
 
+:root{
+    background-color: #F0DBA5;
+}
 #cards {
     display: relative;
 }
-
-
 .single-card {
     width: 500px;
     height: 500px;
@@ -46,9 +47,7 @@
     top: -600px;
     font-size: 25px;
 }
-:root{
-    background-color: #F0DBA5;
-}
+
 #title {
     text-align: center;
     font-size: 30px;
@@ -61,7 +60,7 @@
 
 .column{
     float: left;
-    width: 20%;
+    width:min-content;
     border: 1px solid black;
     position: sticky;
 }
@@ -80,7 +79,7 @@
     margin-left: 0;
     margin-right: 0;
     display: inline-block;
-    width: 30%;
+    width: relative%;
     background-color: #d6c394;
     border: 1px solid black;
     
@@ -97,7 +96,6 @@
 
 .searchForm button{
     display: inline-block;
-
     background-color: #d6c394;
     padding-right: 3px;
     width: 10%;

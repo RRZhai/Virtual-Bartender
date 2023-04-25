@@ -1,11 +1,21 @@
-//global constants
+//////global constants/////
+
+//search Bar/Nav constants
 const entireSearchNav = document.querySelector('#searchNav')
 const formSearch = document.querySelector('#searchInput')
 const searchFilterDD = document.querySelector('#searchFilter')
 const ingrFilter = document.querySelector('#ingrFilter')
 const nameFilter = document.querySelector('#nameFilter')
 
-// global viable
+//Side panel constants
+const sidePanelContainer = document.getElementById("filter-section");
+// const presetFilters = document.getElementById("filterPresets")
+const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
+const spiritFtrLst = document.getElementById("spirit-filter-list");
+const drinkTypeFtrLst = document.getElementById("type-filter-list");
+const spiritExpandBtn = document.getElementById("spirit-expand-btn");
+
+
 const container = document.getElementById('container')
 
 
@@ -68,18 +78,7 @@ const renderDrink = drink => {
 //     })
 // }
 
-const entireSearchNav = document.getElementById("searchNav");
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
-const dropDown = document.getElementById("searchFilter");
 
-//Side panel constants
-const sidePanelContainer = document.getElementById("filter-section");
-// const presetFilters = document.getElementById("filterPresets")
-const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
-const spiritFtrLst = document.getElementById("spirit-filter-list");
-const drinkTypeFtrLst = document.getElementById("type-filter-list");
-const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
 //Initial Page fetch with 10 random drinks for
 function retchRandom() {
