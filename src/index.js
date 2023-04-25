@@ -52,7 +52,6 @@ const fetchDrink = () => {
     .then(drinkData => {
         drinkData.drinks.forEach(drink => {
             renderDrink(drink)
-            // ingArr(drink)
         })
     })
 }
@@ -61,7 +60,6 @@ const renderDrink = drink => {
     const drinkDtl = document.createElement('div')
     drinkDtl.className = 'single-card'
     container.appendChild(drinkDtl)
-
     const drinkImg = document.createElement('img')
     drinkImg.src = drink.strDrinkThumb
     drinkImg.className = 'drink-img'
@@ -86,27 +84,32 @@ const renderDrink = drink => {
     drinkName.textContent = drink.strDrink
     drinkType.textContent = drink.strCategory
     drinkIng.textContent = drink.strIngredient1
-    drinkDtl.addEventListener('click', () => {
-        const drinkIngredient = document.createElement('div')
-        drinkIngredient.className = "ingredient"
-        const drinkReceipe = document.createElement('p')
-        drinkReceipe.className = 'receipe'
-        drinkInfo.after(drinkIngredient)
-        drinkInfo.after(drinkReceipe)
-        drinkReceipe.innerText = drink.strInstructions
-        drinkIngredient.innerText = `${drink.strMeasure1} ${drink.strIngredient1}, 
-        ${drink.strMeasure2} ${drink.strIngredient2}, 
-        ${drink.strMeasure3} ${drink.strIngredient3}, 
-        ${drink.strMeasure4} ${drink.strIngredient4}, 
-        ${drink.strMeasure5} ${drink.strIngredient4}` 
-    })
-}
-//** 
-// const IngArr = (drink) => {
-//     drink.filter(() => {
 
-//     })
-// }
+    drinkImg.addEventListener('click', () => handleDrink(drink))
+}
+
+const handleDrink = (drink) => {
+  const drinkIngredient = document.createElement('div')
+  drinkIngredient.className = "ingredient"
+  const drinkReceipe = document.createElement('p')
+  drinkReceipe.className = 'receipe'
+  // drink.after(drinkIngredient)
+  // drink.after(drinkReceipe)
+  drinkReceipe.innerText = drink.strInstructions
+  drinkIngredient.innerText = ingAndMea(drink)
+  // `${drink.strMeasure1} ${drink.strIngredient1}, 
+  // ${drink.strMeasure2} ${drink.strIngredient2}, 
+  // ${drink.strMeasure3} ${drink.strIngredient3}, 
+  // ${drink.strMeasure4} ${drink.strIngredient4}, 
+  // ${drink.strMeasure5} ${drink.strIngredient4}`
+}
+
+const ingAndMea = (drink) => {
+    const ingreArr = Object.keys(drink).filter(singleIng => {
+        return singleIng[12] === 't'
+    })
+    return ingreArr
+}
 
 
 
