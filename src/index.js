@@ -1,4 +1,4 @@
-// LINES WITH ** in comment are lines that seem like we can delete(?)
+// LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
 //////global constants/////
 
 //search Bar/Nav constants
@@ -9,35 +9,53 @@ const ingrFilter = document.querySelector('#ingrFilter')
 const nameFilter = document.querySelector('#nameFilter')
 const searchForm = document.querySelector('#searchForm')
 
+
+
+
 //Side panel constants
 const sidePanelContainer = document.getElementById("filter-section");
-// const presetFilters = document.getElementById("filterPresets")
+//**  const presetFilters = document.getElementById("filterPresets")
 const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
 const spiritFtrLst = document.getElementById("spirit-filter-list");
 const drinkTypeFtrLst = document.getElementById("type-filter-list");
 const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
-const container = document.getElementById('container')
+const container = document.querySelector('#container')
 
 //functions
 
-const userSearchByName = () => {
-    input = encodeURI(formSearchInput.value)
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
-    console.log(searchNameUrl)
-    fetch(searchNameUrl)
-    .then(res => res.json())
-    .then(searchedArray => {searchedArray.drinks.forEach(drink => renderDrink(drink))})
-}
-const userSearchByIngredient = (e) => {
-    input = encodeURI(e.target['searchInput'].value)
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
-    console.log(searchNameUrl)
-    fetch(searchNameUrl)
-    .then(res => res.json())
-    .then(drinksArray => drinksArray.drinks.forEach(drink => renderDrink(drink)))
+//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
+//need to figure out why
+
+const filterSelecter = () =>{
+    const ddValue = document.querySelector('#searchFilter').value
+    if (ddValue === 'Ingredient'){
+        userSearchByIngredient()
+    }
+    else{
+        userSearchByName()
+    }
 }
 
+const userSearchByName = () => {
+    input = (formSearchInput.value)
+    URLinput = encodeURI(input.replace(' ','_'));
+   // console.log(URLinput)
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
+    fetch(searchNameUrl)
+    .then(res => res.json())
+    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+};
+const userSearchByIngredient = () => {
+    input = (formSearchInput.value)
+    URLinput = encodeURI(input.replace(' ','_'));
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?i=' + URLinput
+    console.log(URLinput)
+    fetch(searchNameUrl)
+    .then(res => res.json())
+    
+    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+}
 
 const fetchDrink = () => {
     fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
@@ -50,9 +68,7 @@ const fetchDrink = () => {
         })
     })
 }
-
 fetchDrink()
-
 const renderDrink = drink => {
     const cards = document.createElement('div')
     cards.className = 'cards'
@@ -92,7 +108,6 @@ const renderDrink = drink => {
         ${drink.strMeasure5} ${drink.strIngredient4}` 
     })
 }
-
 //** 
 // const IngArr = (drink) => {
 //     drink.filter(() => {
@@ -115,22 +130,20 @@ function retchRandom() {
 
 //** 
 //function renderOneDrinkCard(drinkObj) {}
-
-//helper functions
-
-
-
-
-// spiritExpandBtn.addEventListener(
+//** spiritExpandBtn.addEventListener(
 //   "click",
 //   e.target.child.classList.toggle("hidden")
 // );
 
-spiritExpandBtn.appendChild(spiritFtrLst);
+//*** spiritExpandBtn.appendChild(spiritFtrLst);
 
 
 ///event listeners:
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    userSearchByName()
+    
+    container.innerHTML = ''
+    filterSelecter()
+    
 })
+
