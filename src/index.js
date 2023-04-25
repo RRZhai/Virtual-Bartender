@@ -3,6 +3,13 @@ const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("searchInput");
 const dropDown = document.getElementById("searchFilter");
 
+//Side panel constants
+const sidePanelContainer = document.getElementById("filter-section");
+// const presetFilters = document.getElementById("filterPresets")
+const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
+const spiritFtrLst = document.getElementById("spirit-filter-list");
+const drinkTypeFtrLst = document.getElementById("type-filter-list");
+
 //Initial Page fetch with 10 random drinks
 fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
   .then((res) => res.json())
@@ -23,3 +30,5 @@ const searchFilter = () => {
 const fetch4DrinkIngredients = () => {
   fetch("").then().then();
 };
+
+hasAlcoholFtrLst.addEventListener("click", e.target.classList.toggle("hidden"));

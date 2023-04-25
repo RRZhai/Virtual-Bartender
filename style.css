@@ -7,13 +7,13 @@
 }
 .body {
     font-family: 'Recoleta';
+    display: flex;
 }
 
-/* .column{
+.column{
     float: left;
     width: 25%;
-commented out to format side bar
-} */
+}
 
 .searchForm{
     display: flex;
@@ -55,9 +55,30 @@ commented out to format side bar
     position: sticky;
   }
 
-  #side-panel {
-    display: flexbox;
-    border-color: black;
-    border-width: 1px;
+#side-panel {
+    width: 30%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column
+    ;
+    
+}
+
+#filter-section li{
+    list-style-type: none;
+    display: flex;
+    
   }
 
+.hidden {
+display: none;
+  }
+
+.single-filter {
+    border: black;
+    border-width: 5px;
+    border-radius: 15px;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+}
