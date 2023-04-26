@@ -43,7 +43,7 @@ const userSearchByName = () => {
     })
 }
 
-//is the issue here that because I am using ingredient as a search parameter --> youre just fetching 
+//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into 
 const userSearchByIngredient = () => {
     const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
@@ -53,7 +53,7 @@ const userSearchByIngredient = () => {
     .then(res => res.json())
     .then(searchedArray => {
         searchedArray.drinks.forEach(drink =>{
-            renderDrink(drink)
+            console.log(drink.strDrink)
         })
     })
 }
