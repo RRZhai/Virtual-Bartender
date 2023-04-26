@@ -3,10 +3,12 @@
 :root{
     background-color: #F0DBA5;
 }
-.body {
+
+body {
     font-family: 'Recoleta';
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 
@@ -14,17 +16,18 @@
 #title {
     text-align: center;
     font-size: 30px;
-    flex-grow: 5;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }
 
 /* Side-Panel */
 
 #side-panel {
-   
-   
-   
-   
-    flex-grow: 1;
+
+margin: 0;
+padding: 0;
+
 
 }
 
@@ -88,45 +91,29 @@
     position: sticky;
 }
 
-/* #filter-section
-#filter-section-form {
-    display: flex;
-} */
+/* #filter-section */
+
 
 li {
     list-style-type: none;
     display: flex;
 }
-/* .hidden {
-display: none;
-  } */
-
-.single-filter {
-    border: black;
-    border-width: 5px;
-    border-radius: 15px;
-    width: 80%;
-    flex-direction: column;
-    justify-content: center;
-
-}
-
-
 
 /* Card Section */
 
 #container {
     display: flex;
     flex-wrap: wrap;
-        flex-grow: 2;
+    justify-content: space-between;
+    width: 60%;
 }
 #cards {
     display: relative;
 }
 .single-card {
-    width: 300px;
-    height: 300px;
-    padding: 10px;
+    width: 200px;
+    height: 200px;
+    padding: 5px;
     background: var(--white);
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
@@ -134,17 +121,17 @@ display: none;
     transition: all 0.2s;
 }
 .drink-img {
-    width: 300px
+    width: 200px
 }
 .drink-info {
     position: relative;
     left: 0px;
-    top: -150px;
-    width: 250px;
+    top: -100px;
+    width: 175px;
     height: relative;
     background-color: white;
     opacity: 60%;
-    font-size: 20px;
+    font-size: 18px;
     border: 10px;
 }
 .receipe {
