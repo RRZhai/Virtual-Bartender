@@ -1,69 +1,50 @@
+/* Global */
 
 :root{
     background-color: #F0DBA5;
 }
-#cards {
-    display: relative;
-}
-.single-card {
-    width: 500px;
-    height: 500px;
-    padding: 20px;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
-    scroll-snap-align: start;
-    transition: all 0.2s;
+
+
+body {
+    font-family: 'Recoleta';
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.drink-img {
-    width: 500px
-}
-
-.drink-info {
-    position: relative;
-    left: 300px;
-    top: -150px;
-    width: 200px;
-    height: relative;
-    background-color:white;
-    opacity: 60%;
-    font-size: 25px;
-    border: 10px;
-}
-.receipe {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
-.ingredient {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
 #title {
     text-align: center;
     font-size: 30px;
-}
-.body {
-    font-family: 'Recoleta';
-    display: flex;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }
 
-.column{
+
+/* Side-Panel */
+
+#side-panel {
+margin: 0;
+padding: 10px;
+padding-top: 20px;
+border: 2px solid black;
+height: fit-content;
+}
+
+/* Side-Bar Search*/
+/* .column {
     float: left;
     width:max-content;
     border: 1px solid black;
     position: sticky;
+} */
+.searchForm {
+    display: flex;
 }
-
 #searchForm{
     display: inline-block;
     background-color: #d6c394;
     font-size: 16px;
-    border: 1px solid black;
     margin: 0;
 }
 .searchBtn{
@@ -78,7 +59,7 @@
     border: 1px solid black;
     
 }
-#searchFilter:hover{
+#searchFilter:hover {
     background-color: #c29e3a;
 }
 .searchForm input[type='text']{
@@ -87,7 +68,6 @@
     font-size: 16px;
     border: 1px solid black;
 }
-
 .searchForm button{
     display: inline-block;
     background-color: #d6c394;
@@ -96,45 +76,111 @@
     font: 10px;
     border: 1px solid black;
 }
-.searchForm button:hover{
+.searchForm button:hover {
     background-color: #c29e3a;
 }
 .searchForm::after {
     content: "";
     clear: both;
     display: table;
-  }
-
-  #searchNav {
-    border: 1px solid black;
+}
+#searchNav {
     position: sticky;
-  }
-
-#side-panel {
-    width: 30%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column
-    ;
-    
 }
 
-#filter-section li{
+/* #filter-section */
+.filter-section-form {
+    display: flex;
+}
+
+li {
     list-style-type: none;
     display: flex;
-    
-  }
-
-/* .hidden {
-display: none;
-  } */
+}
 
 .single-filter {
-    border: black;
-    border-width: 5px;
-    border-radius: 15px;
-    width: 80%;
-    flex-direction: column;
-    justify-content: center;
-
+    border: black 1px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px ;
 }
+
+.header-single-filter {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+}
+
+/* Card Section */
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 60%;
+}
+.cards{
+    display: flex;
+    gap: 5px;
+
+    overflow-y: auto;
+    overscroll-behavior-inline: contain;
+
+    padding: 2em;
+}
+
+.drink-img {
+    position: relative;
+    width: relative;
+    height: 200px;
+    padding: 10px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: start;
+    transition: all 0.2s;
+}
+.drink-img:hover{
+    opacity: 0.5;
+}
+
+.drink-info {
+    position: relative;
+    background-color: white;
+    font-size: 12px;
+    width: 90px;
+    right: -120px;
+    bottom: 100px;
+    opacity: 0.8;
+}
+
+
+.ingredient {
+    position:relative;
+    left: 600px;
+    top: -600px;
+    font-size: 25px;
+}
+
+
+/* Modal */
+
+
+
+
+
+
+
+
+/* Not Categorized */
+
+
+
+
+
+
