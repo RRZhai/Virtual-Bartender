@@ -29,6 +29,7 @@ padding: 10px;
 padding-top: 20px;
 border: 2px solid black;
 height: fit-content;
+width: 20%;
 }
 
 /* Side-Bar Search*/
@@ -122,16 +123,18 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 60%;
+    width: 75%;
+    padding-left: 30px;
 }
 .cards{
     display: flex;
     gap: 5px;
-
     overflow-y: auto;
     overscroll-behavior-inline: contain;
-
-    padding: 2em;
+    padding: 20px;
+}
+.single-card {
+    height: 222px;
 }
 
 .drink-img {
