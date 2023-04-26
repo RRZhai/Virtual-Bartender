@@ -9,13 +9,6 @@ const ingrFilter = document.querySelector("#ingrFilter");
 const nameFilter = document.querySelector("#nameFilter");
 const searchForm = document.querySelector("#searchForm");
 
-//Side panel constants (ren)
-// const sidePanelContainer = document.getElementById("filter-section");
-// const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
-// const spiritFtrLst = document.getElementById("spirit-filter-list");
-// const drinkTypeFtrLst = document.getElementById("type-filter-list");
-// const spiritExpandBtn = document.getElementById("spirit-expand-btn");
-
 //card constants (shiyao)
 const cards = document.querySelector('.cards')
 const modalName = document.getElementById('drink-name-modal')
@@ -90,6 +83,15 @@ const renderDrink = (drink) => {
   drinkName.innerText = drink.strDrink
   card.append(drinkImg, drinkName)
   drinkInfo(drink, drinkName)
+  
+  
+  card.dataset.checkBoxTags = [
+  drink.strAlcoholic,
+  drink.strIngredient1,
+  drink.strIngredient2,
+  drink.strCategory,
+];
+  
   drinkImg.addEventListener('click', () => handleDrink(drink))
 }
 
@@ -206,4 +208,7 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
+
+
+
 
