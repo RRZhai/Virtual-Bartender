@@ -77,30 +77,20 @@ const userSearchByIngredient = () => {
     })
 }
 
-const fetchDrink = () => {
-    fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-    .then(resp => resp.json())
-    .then(drinkData => {
-        drinkData.drinks.forEach(drink => {
-            renderDrink(drink)
-        })
-    })
-}
-fetchDrink()
 const renderDrink = drink => {
-    const drinkDtl = document.createElement('div')
-    drinkDtl.className = 'single-card'
-    container.appendChild(drinkDtl)
-
-    const drinkImg = document.createElement('img')
-    drinkImg.src = drink.strDrinkThumb
-    drinkImg.className = 'drink-img'
-    drinkDtl.appendChild(drinkImg)
-    
-    const drinkInfo = document.createElement('div')
-    drinkInfo.className = "drink-info"
-    drinkDtl.appendChild(drinkInfo)
-
+  const card = document.createElement('div')
+  card.className = 'single-card'
+  cards.appendChild(card)
+  const drinkImg = document.createElement('img')
+  drinkImg.className = 'drink-img'
+  drinkImg.src = drink.strDrinkThumb
+  const drinkName = document.createElement('div')
+  drinkName.className = 'drink-info'
+  drinkName.innerText = drink.strDrink
+  card.append(drinkImg, drinkName)
+  drinkInfo(drink, drinkName)
+  drinkImg.addEventListener('click', () => handleDrink(drink))
+}
 
 const handleDrink = (drink) => {
   modalImg.src = drink.strDrinkThumb
@@ -125,9 +115,6 @@ const ingredientList = (drink) => {
 }
 
 
-    drinkImg.addEventListener('click', () => handleDrink(drink))
-    
-
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
       return keys[9] === 'e'
@@ -149,34 +136,8 @@ const drinkInfo = (drink, drinkName) => {
   drinkName.append(drinkType, drinkIng1)
 }
 
-const renderDrink = drink => {
-  const card = document.createElement('div')
-  card.className = 'single-card'
-  cards.appendChild(card)
-  const drinkImg = document.createElement('img')
-  drinkImg.className = 'drink-img'
-  drinkImg.src = drink.strDrinkThumb
-  const drinkName = document.createElement('div')
-  drinkName.className = 'drink-info'
-  drinkName.innerText = drink.strDrink
-  card.append(drinkImg, drinkName)
-  drinkInfo(drink, drinkName)
-  drinkImg.addEventListener('click', () => handleDrink(drink))
-}
 
-const fetchDrink = () => {
-  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-  .then(resp => resp.json())
-  // .then(drinkData => {debugger})
-  .then(drinkData => {
-      drinkData.drinks.forEach(drink => {
-        renderDrink(drink);
-        // ingredientList(drink);
-        // measureList(drink)
-      })
-  })
-}
-fetchDrink()
+
 
 // S end
 
