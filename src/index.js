@@ -24,32 +24,89 @@ const modalImg = document.getElementById('img-modal')
 const ingAndMea = document.getElementById('ingredient-measure')
 const modalInst = document.getElementById('instructions-modal')
 
+//buttons n stuff constants:
+const surpriseBtn = document.querySelector('#random-filter-btn')
+const popularBtn = document.querySelector('#most-popular-btn')
+const latestDrinksBtn = document.querySelector('#new-recipies-btn')
 //functions
 
 //nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
 //need to figure out why
 
-
-const userSearchByName = () => {
-    input = (formSearchInput.value)
-    URLinput = encodeURI(input.replace(' ','_'));
+const userSearchByName = (drinkName) => {
+    const input = (formSearchInput.value)
+    const URLinput = encodeURI(input.replace(' ','_'));
    // console.log(URLinput)
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
+   const query = drinkName ? drinkName : URLinput 
+   const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + query
     fetch(searchNameUrl)
     .then(res => res.json())
-    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
-};
+    .then(searchedArray => {
+        searchedArray.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+
+//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into 
 const userSearchByIngredient = () => {
-    input = (formSearchInput.value)
+    const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?i=' + URLinput
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=' + URLinput
     console.log(URLinput)
     fetch(searchNameUrl)
     .then(res => res.json())
-    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+    .then(searchedArray => {
+        const namesArray = searchedArray.drinks.map(drink =>{
+        return drink.strDrink
+        })
+        namesArray.forEach(userSearchByName)
+    })
+}
+const fetchPopular = () => {
+    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/popular.php')
+    .then(res => res.json())
+    .then(drinkData => {
+        drinkData.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+const fetchLatest = () =>{
+    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/latest.php')
+    .then(res => res.json())
+    .then(searchedArray => {
+        searchedArray.drinks.forEach(drink =>{
+            renderDrink(drink)
+        })
+    })
 }
 
-// S Starts
+const fetchDrink = () => {
+    fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
+    .then(resp => resp.json())
+    .then(drinkData => {
+        drinkData.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+fetchDrink()
+const renderDrink = drink => {
+    const drinkDtl = document.createElement('div')
+    drinkDtl.className = 'single-card'
+    container.appendChild(drinkDtl)
+
+    const drinkImg = document.createElement('img')
+    drinkImg.src = drink.strDrinkThumb
+    drinkImg.className = 'drink-img'
+    drinkDtl.appendChild(drinkImg)
+    
+    const drinkInfo = document.createElement('div')
+    drinkInfo.className = "drink-info"
+    drinkDtl.appendChild(drinkInfo)
+
+
 const handleDrink = (drink) => {
   modalImg.src = drink.strDrinkThumb
   ingAndMea.innerText = `${ingredientList(drink)}  
@@ -71,6 +128,10 @@ const ingredientList = (drink) => {
     }
     return ingreArr
 }
+
+
+    drinkImg.addEventListener('click', () => handleDrink(drink))
+    
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
@@ -127,13 +188,10 @@ fetchDrink()
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-    .then((res) => res.json())
-    .then((randomDrinksArray) =>
-      randomDrinksArray.forEach((oneRandomDrink) =>
-        renderOneDrinkCard(oneRandomDrink)
-      )
-    );
+    .then(res => res.json())
+    .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
+
 //** 
 //function renderOneDrinkCard(drinkObj) {}
 //** spiritExpandBtn.addEventListener(
@@ -145,11 +203,27 @@ function fetchRandom() {
 
 
 ///event listeners:
+latestDrinksBtn.addEventListener('click', ()=>{
+    container.innerHTML =''
+    fetchLatest()
+})
+popularBtn.addEventListener('click',()=>{
+    container.innerHTML = ''
+    fetchPopular()
+} )
+surpriseBtn.addEventListener('click', () =>{
+    container.innerHTML = '' 
+    fetchRandom()
+    })
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
     
     container.innerHTML = ''
-    userSearchByName()
+    if (searchFilter.value === 'Drink'){
+        userSearchByName()
+    }else{
+        userSearchByIngredient()
+    }
     
 })
 
