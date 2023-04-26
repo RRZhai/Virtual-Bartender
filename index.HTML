@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script defer src="src/apiKey.js"></script>
-    <script defer src="src/index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="title">Title Block</div>
 
-<div id='searchNav' class = 'column'>
-    <form id= 'searchForm' >
-        <input type='text' placeholder='search' id='searchInput'>
-    <select class="form-select" id="searchFilter">
-        <option id ='drinkDD' value="Drink">Drink Name</option>
-        <option id = 'ingrDD' value="Ingredient">Ingredient</option>
-    </select>
-        <button type="submit" class ='searchBtn'>
-                 &#128269;
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script defer src="src/apiKey.js"></script>
+  <script defer src="src/index.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="title">Title Block</div>
+
+  <div id='searchNav' class='column'>
+    <form id='searchForm'>
+      <input type='text' placeholder='search' id='searchInput'>
+      <select class="form-select" id="searchFilter">
+        <option id='drinkDD' value="Drink">Drink Name</option>
+        <option id='ingrDD' value="Ingredient">Ingredient</option>
+      </select>
+      <button type="submit" class='searchBtn'>
+        &#128269;
+      </button>
     </form>
-<div>Filters</div>
+    <div>Filters</div>
+  </div>
 
 
 
-    <div id="header"></div>
 
-    <div id="side-panel">
-      <div id="preset-filters">
-        <button id="random-filter-btn" value="randomselection" class="preset-filter-buttons">
-          Surprise Me!
-        </button>
-        <button id="most-popular-btn" value="popular" class="preset-filter-btn">
-          Most Popular
-        </button>
-        <button id="new-recipies-btn" value="latest" class="preset-filter-buttons">
-          New Recipies
-        </button>
-      </div>
-      <div id="filter-section">
+  <div id="side-panel">
+    <div id="preset-filters">
+      <button id="random-filter-btn" value="randomselection" class="preset-filter-btn">
+        Surprise Me!
+      </button>
+      <button id="most-popular-btn" value="popular" class="preset-filter-btn">
+        Most Popular
+      </button>
+      <button id="new-recipies-btn" value="latest" class="preset-filter-btn">
+        New Recipies
+      </button>
+    </div>
+    <div id="filter-section">
+      <form action="change" id="filter-section-form">
         <div id="alcohol-content-filter" class="single-filter">
           <div class="header-single-filter">
             <h3 id="alcohol-content-header">Alcoholic?</h3>
             <button class="expand-collapse-filter">+</button>
             <button class="clear-filter-btns">clear</button>
           </div>
-          <ul
-            id="alcohol-content-filter-list"
-            class="single-filter-list hidden"
-          >
+          <ul id="alcohol-content-filter-list" class="single-filter-list hidden">
             <li><input type="checkbox" class="filter-intput" value="alcoholic" />Alcoholic</li>
             <li>
               <input type="checkbox" class="filter-intput" value="non-alcoholic" />Non-Alcoholic
             </li>
             <li>
-              <input type="checkbox" class="filter-intput" value="aslcohol-optional" />Alcohol
+              <input type="checkbox" class="filter-intput" value="aclcohol-optional" />Alcohol
               Optional
             </li>
           </ul>
@@ -83,22 +83,22 @@
 
           <button class="clear-filter-btns">clear</button>
         </div>
-      <div id="type-filter" class="single-filter">
-        <div class="header-single-filter">
-          <h3 id="type-filter-header">Drink Type</h3>
-          <button class="expand-collapse-filter">+</button>
-          <button class="clear-filter-btns">clear</button>
+        <div id="type-filter" class="single-filter">
+          <div class="header-single-filter">
+            <h3 id="type-filter-header">Drink Type</h3>
+            <button class="expand-collapse-filter">+</button>
+            <button class="clear-filter-btns">clear</button>
+          </div>
+          <ul id="type-filter-list" class="single-filter-list hidden">
+            <li><input type="checkbox" class="filter-intput" value="cocktail" />Cocktail</li>
+            <li><input type="checkbox" class="filter-intput" value="shot" />Shot</li>
+            <li><input type="checkbox" class="filter-intput" value="punch" />Punch</li>
+            <li><input type="checkbox" class="filter-intput" value="other" />Other</li>
+
+          </ul>
+
         </div>
-        <ul id="type-filter-list" class="single-filter-list hidden">
-          <li><input type="checkbox" class="filter-intput" value="cocktail" />Cocktail</li>
-          <li><input type="checkbox" class="filter-intput" value="shot" />Shot</li>
-          <li><input type="checkbox" class="filter-intput" value="punch" />Punch</li>
-          <li><input type="checkbox" class="filter-intput" value="other" />Other</li>
-          <!-- need to find out how to bucket into these categories-->
-        </ul>
-        <!-- clear/select all filter category buttons -->
-      </div>
-      <!-- clear/select all filters buttons -->
+      </form>
     </div>
 
     <!-- modal start -->
@@ -109,8 +109,9 @@
       <p id="instructions-modal">Instructions</p>
     </div> -->
     <!-- modal end -->
-        <div id="container">
-        <h2>Drinks</h2>
+    <div id="container">
+      <h2>Drinks</h2>
 
-  </body>
+</body>
+
 </html>
