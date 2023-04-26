@@ -4,6 +4,7 @@
     background-color: #F0DBA5;
 }
 
+
 body {
     font-family: 'Recoleta';
     display: flex;
@@ -123,45 +124,44 @@ h3 {
     justify-content: space-between;
     width: 60%;
 }
-#cards {
-    display: relative;
+.cards{
+    display: flex;
+    gap: 5px;
+
+    overflow-y: auto;
+    overscroll-behavior-inline: contain;
+
+    padding: 2em;
 }
-.single-card {
-    width: 250px;
-    height: 250px;
-    padding: 5px;
-    background: var(--white);
-    border-radius: 5px;
+
+.drink-img {
+    position: relative;
+    width: relative;
+    height: 200px;
+    padding: 10px;
+    background: white;
+    border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
     scroll-snap-align: start;
     transition: all 0.2s;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
-   
 }
-.drink-img {
-    width: 250px
+.drink-img:hover{
+    opacity: 0.5;
 }
+
 .drink-info {
     position: relative;
-    left: 0px;
-    top: -100px;
-    width: 175px;
-    height: relative;
     background-color: white;
-    opacity: 60%;
-    font-size: 18px;
-    border: 10px;
+    font-size: 12px;
+    width: 90px;
+    right: -120px;
+    bottom: 100px;
+    opacity: 0.8;
 }
-.receipe {
-    position: relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
+
+
 .ingredient {
-    position: relative;
+    position:relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
