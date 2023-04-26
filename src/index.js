@@ -25,7 +25,6 @@ const container = document.querySelector("#container");
 const fetchDrink = () => {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then((resp) => resp.json())
-
     .then((drinkData) => {
       drinkData.drinks.forEach((drink) => {
         renderDrink(drink);
@@ -138,7 +137,20 @@ searchForm.addEventListener("submit", (e) => {
 //preset filter section
 
 document.addEventListener("click", (e) => {
-  const isPresetFilter = e.target.className("preset-filter-btn"); //adding event listen to each preset filter box
+  const isPresetFilter = e.target.classList.contains("preset-filter-btn"); //adding event listen to each preset filter box
+  const presetURLAdd = e.target.value;
+  if (isPresetFilter) {
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v2/9973533/${presetURLAdd}.php`
+    )
+      .then((res) => res.json())
+      .then((drinkData) => {
+        container.innerHTML = "";
+        drinkData.drinks.forEach((drink) => {
+          renderDrink(drink);
+        });
+      });
+  }
 });
 
 //filter section
@@ -146,5 +158,6 @@ document.addEventListener("click", (e) => {
 const checkBoxForm = document.getElementById("filter-section-form");
 
 document.addEventListener("change", (e) => {
-  const isCheckBoxClick = e.target.className("filter-input"); // adding event listener to eachcheckbox (with matching class)
+  const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
+  console.log("checkbox got clicked"); // This works!
 });

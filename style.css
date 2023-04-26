@@ -3,83 +3,42 @@
 :root{
     background-color: #F0DBA5;
 }
-#cards {
-    display: relative;
+.body {
+    font-family: 'Recoleta';
+    display: flex;
+    flex-wrap: wrap;
 }
-.single-card {
-    width: 500px;
-    height: 500px;
-    padding: 20px;
-    background: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
-    scroll-snap-align: start;
-    transition: all 0.2s;
-}
+
+
 
 #title {
     text-align: center;
     font-size: 30px;
+    flex-grow: 5;
 }
 
 /* Side-Panel */
 
 #side-panel {
-    width: 30%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+   
+   
+   
+   
+    flex-grow: 1;
 
 }
 
 
 /* Side-Bar Search*/
-
-.drink-info {
-    position: relative;
-    left: 300px;
-    top: -150px;
-    width: 200px;
-    height: relative;
-    background-color:white;
-    opacity: 60%;
-    font-size: 25px;
-    border: 10px;
-}
-.receipe {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
-.ingredient {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
-#title {
-    text-align: center;
-    font-size: 30px;
-}
-.body {
-    font-family: 'Recoleta';
-    display: flex;
-}
-
-.column {
+/* .column {
     float: left;
     width:max-content;
     border: 1px solid black;
     position: sticky;
-}
-
+} */
 .searchForm {
     display: flex;
 }
-
-#searchFilter {
-    width: 30%;
 #searchForm{
     display: inline-block;
     background-color: #d6c394;
@@ -99,19 +58,15 @@
     border: 1px solid black;
     
 }
-
 #searchFilter:hover {
     background-color: #c29e3a;
 }
-
-
 .searchForm input[type='text']{
     display: inline-block;
     background-color: #d6c394;
     font-size: 16px;
     border: 1px solid black;
 }
-
 .searchForm button{
     display: inline-block;
     background-color: #d6c394;
@@ -120,29 +75,28 @@
     font: 10px;
     border: 1px solid black;
 }
-
 .searchForm button:hover {
     background-color: #c29e3a;
 }
-
 .searchForm::after {
     content: "";
     clear: both;
     display: table;
 }
-
 #searchNav {
     border: 1px solid black;
     position: sticky;
 }
 
-/* #filter-section */
+/* #filter-section
+#filter-section-form {
+    display: flex;
+} */
 
 li {
     list-style-type: none;
     display: flex;
 }
-
 /* .hidden {
 display: none;
   } */
@@ -160,44 +114,45 @@ display: none;
 
 
 /* Card Section */
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+        flex-grow: 2;
+}
 #cards {
     display: relative;
 }
-
 .single-card {
-    width: 500px;
-    height: 500px;
-    padding: 20px;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
     background: var(--white);
-    border-radius: 12px;
+    border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
     scroll-snap-align: start;
     transition: all 0.2s;
 }
-
 .drink-img {
-    width: 500px
+    width: 300px
 }
-
 .drink-info {
     position: relative;
-    left: 300px;
+    left: 0px;
     top: -150px;
-    width: 200px;
+    width: 250px;
     height: relative;
     background-color: white;
     opacity: 60%;
-    font-size: 25px;
+    font-size: 20px;
     border: 10px;
 }
-
 .receipe {
     position: relative;
     left: 600px;
     top: -600px;
     font-size: 25px;
 }
-
 .ingredient {
     position: relative;
     left: 600px;
