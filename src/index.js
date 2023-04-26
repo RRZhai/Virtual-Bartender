@@ -2,22 +2,22 @@
 //////global constants/////
 
 //search Bar/Nav constants (nolan)
-const entireSearchNav = document.querySelector('#searchNav')
-const formSearchInput = document.querySelector('#searchInput')
-const searchFilterDD = document.querySelector('#searchFilter')
-const ingrFilter = document.querySelector('#ingrFilter')
-const nameFilter = document.querySelector('#nameFilter')
-const searchForm = document.querySelector('#searchForm')
+const entireSearchNav = document.querySelector("#searchNav");
+const formSearchInput = document.querySelector("#searchInput");
+const searchFilterDD = document.querySelector("#searchFilter");
+const ingrFilter = document.querySelector("#ingrFilter");
+const nameFilter = document.querySelector("#nameFilter");
+const searchForm = document.querySelector("#searchForm");
 
 //Side panel constants (ren)
-const sidePanelContainer = document.getElementById("filter-section");
-//**  const presetFilters = document.getElementById("filterPresets")
-const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
-const spiritFtrLst = document.getElementById("spirit-filter-list");
-const drinkTypeFtrLst = document.getElementById("type-filter-list");
-const spiritExpandBtn = document.getElementById("spirit-expand-btn");
+// const sidePanelContainer = document.getElementById("filter-section");
+// const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
+// const spiritFtrLst = document.getElementById("spirit-filter-list");
+// const drinkTypeFtrLst = document.getElementById("type-filter-list");
+// const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
 //card constants (shiyao)
+
 const cards = document.querySelector('.cards')
 const modalName = document.getElementById('drink-name-modal')
 const modalImg = document.getElementById('img-modal')
@@ -28,7 +28,19 @@ const modalInst = document.getElementById('instructions-modal')
 const surpriseBtn = document.querySelector('#random-filter-btn')
 const popularBtn = document.querySelector('#most-popular-btn')
 const latestDrinksBtn = document.querySelector('#new-recipies-btn')
+
 //functions
+//This is the initial fetch for Random on page load but also to be used for the random preset
+const fetchDrink = () => {
+  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
+    .then((resp) => resp.json())
+    .then((drinkData) => {
+      drinkData.drinks.forEach((drink) => {
+        renderDrink(drink);
+      });
+    });
+};
+fetchDrink();
 
 const userSearchByName = (drinkName) => {
     const input = (formSearchInput.value)
@@ -59,50 +71,21 @@ const userSearchByIngredient = () => {
         namesArray.forEach(userSearchByName)
     })
 }
-const fetchPopular = () => {
-    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/popular.php')
-    .then(res => res.json())
-    .then(drinkData => {
-        drinkData.drinks.forEach(drink => {
-            renderDrink(drink)
-        })
-    })
-}
-const fetchLatest = () =>{
-    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/latest.php')
-    .then(res => res.json())
-    .then(searchedArray => {
-        searchedArray.drinks.forEach(drink =>{
-            renderDrink(drink)
-        })
-    })
-}
 
-const fetchDrink = () => {
-    fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-    .then(resp => resp.json())
-    .then(drinkData => {
-        drinkData.drinks.forEach(drink => {
-            renderDrink(drink)
-        })
-    })
-}
-
-fetchDrink()
 const renderDrink = drink => {
-    const drinkDtl = document.createElement('div')
-    drinkDtl.className = 'single-card'
-    container.appendChild(drinkDtl)
-
-    const drinkImg = document.createElement('img')
-    drinkImg.src = drink.strDrinkThumb
-    drinkImg.className = 'drink-img'
-    drinkDtl.appendChild(drinkImg)
-    
-    const drinkInfo = document.createElement('div')
-    drinkInfo.className = "drink-info"
-    drinkDtl.appendChild(drinkInfo)
-
+  const card = document.createElement('div')
+  card.className = 'single-card'
+  cards.appendChild(card)
+  const drinkImg = document.createElement('img')
+  drinkImg.className = 'drink-img'
+  drinkImg.src = drink.strDrinkThumb
+  const drinkName = document.createElement('div')
+  drinkName.className = 'drink-info'
+  drinkName.innerText = drink.strDrink
+  card.append(drinkImg, drinkName)
+  drinkInfo(drink, drinkName)
+  drinkImg.addEventListener('click', () => handleDrink(drink))
+}
 
 const handleDrink = (drink) => {
   modalImg.src = drink.strDrinkThumb
@@ -111,7 +94,6 @@ const handleDrink = (drink) => {
   modalName.innerText = drink.strDrink
   modalInst.textContent = drink.strInstructions
 }
-
 
 const ingredientList = (drink) => {
     let ingreKeyArr = Object.keys(drink).filter(keys => {
@@ -125,10 +107,6 @@ const ingredientList = (drink) => {
     }
     return ingreArr
 }
-
-
-    drinkImg.addEventListener('click', () => handleDrink(drink))
-    
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
@@ -151,37 +129,6 @@ const drinkInfo = (drink, drinkName) => {
   drinkName.append(drinkType, drinkIng1)
 }
 
-const renderDrink = drink => {
-  const card = document.createElement('div')
-  card.className = 'single-card'
-  cards.appendChild(card)
-  const drinkImg = document.createElement('img')
-  drinkImg.className = 'drink-img'
-  drinkImg.src = drink.strDrinkThumb
-  const drinkName = document.createElement('div')
-  drinkName.className = 'drink-info'
-  drinkName.innerText = drink.strDrink
-  card.append(drinkImg, drinkName)
-  drinkInfo(drink, drinkName)
-  drinkImg.addEventListener('click', () => handleDrink(drink))
-}
-
-const fetchDrink = () => {
-  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-  .then(resp => resp.json())
-  // .then(drinkData => {debugger})
-  .then(drinkData => {
-      drinkData.drinks.forEach(drink => {
-        renderDrink(drink);
-        // ingredientList(drink);
-        // measureList(drink)
-      })
-  })
-}
-fetchDrink()
-
-// S end
-
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
@@ -189,37 +136,50 @@ function fetchRandom() {
     .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
 
-//** 
-//function renderOneDrinkCard(drinkObj) {}
-//** spiritExpandBtn.addEventListener(
-//   "click",
-//   e.target.child.classList.toggle("hidden")
-// );
+//search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
+//order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
+const searchFilter = () => {
+  let selectedFilter = searchFilter.value;
+};
 
-//*** spiritExpandBtn.appendChild(spiritFtrLst);
-
+const fetch4DrinkIngredients = () => {
+  fetch("").then().then();
+};
 
 ///event listeners:
-latestDrinksBtn.addEventListener('click', ()=>{
-    container.innerHTML =''
-    fetchLatest()
-})
-popularBtn.addEventListener('click',()=>{
-    container.innerHTML = ''
-    fetchPopular()
-} )
-surpriseBtn.addEventListener('click', () =>{
-    container.innerHTML = '' 
-    fetchRandom()
-    })
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    container.innerHTML = ''
-    if (searchFilter.value === 'Drink'){
-        userSearchByName()
-    }else{
-        userSearchByIngredient()
-    }
-    
-})
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  container.innerHTML = "";
+  userSearchByName();
+});
+
+//preset filter section
+
+document.addEventListener("click", (e) => {
+  const isPresetFilter = e.target.classList.contains("preset-filter-btn"); //adding event listen to each preset filter box
+  const presetURLAdd = e.target.value;
+  if (isPresetFilter) {
+    fetch(
+      `https://www.thecocktaildb.com/api/json/v2/9973533/${presetURLAdd}.php`
+    )
+      .then((res) => res.json())
+      .then((drinkData) => {
+        container.innerHTML = "";
+        drinkData.drinks.forEach((drink) => {
+          renderDrink(drink);
+        });
+      });
+  }
+});
+
+//filter section
+
+const checkBoxForm = document.getElementById("filter-section-form");
+
+document.addEventListener("change", (e) => {
+  const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
+  console.log("checkbox got clicked"); // This works!
+});
+
 
