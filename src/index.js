@@ -23,6 +23,7 @@ const container = document.querySelector('#container')
 //buttons n stuff constants:
 const surpriseBtn = document.querySelector('#random-filter-btn')
 const popularBtn = document.querySelector('#most-popular-btn')
+const latestDrinksBtn = document.querySelector('#new-recipies-btn')
 //functions
 
 //nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
@@ -61,6 +62,15 @@ const fetchPopular = () => {
     .then(res => res.json())
     .then(drinkData => {
         drinkData.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+const fetchLatest = () =>{
+    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/latest.php')
+    .then(res => res.json())
+    .then(searchedArray => {
+        searchedArray.drinks.forEach(drink =>{
             renderDrink(drink)
         })
     })
@@ -152,6 +162,10 @@ function fetchRandom() {
 
 
 ///event listeners:
+latestDrinksBtn.addEventListener('click', ()=>{
+    container.innerHTML =''
+    fetchLatest()
+})
 popularBtn.addEventListener('click',()=>{
     container.innerHTML = ''
     fetchPopular()
