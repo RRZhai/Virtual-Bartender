@@ -17,12 +17,13 @@ const searchForm = document.querySelector("#searchForm");
 // const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
 //card constants (shiyao)
-
 const cards = document.querySelector('.cards')
 const modalName = document.getElementById('drink-name-modal')
 const modalImg = document.getElementById('img-modal')
 const ingAndMea = document.getElementById('ingredient-measure')
 const modalInst = document.getElementById('instructions-modal')
+const meaTable = document.querySelector('.Measure')
+const ingTable = document.getElementById('ingredient')
 
 //buttons n stuff constants:
 const surpriseBtn = document.querySelector('#random-filter-btn')
@@ -55,7 +56,6 @@ const userSearchByName = (drinkName) => {
     fetch(searchNameUrl)
     .then(res => res.json())
     .then(searchedArray => {
-      debugger
         searchedArray.drinks.forEach(drink => {
             renderDrink(drink)
         })
@@ -91,17 +91,30 @@ const renderDrink = (drink) => {
   card.append(drinkImg, drinkName)
   drinkInfo(drink, drinkName)
   drinkImg.addEventListener('click', () => handleDrink(drink))
-  console.log(drink)
+}
+
+const column1 = (drink) => {
+  (ingredientList(drink)).forEach(ingredient => {
+    const createIng = document.createElement('th')
+    createIng.innerText = ingredient
+    ingTable.append(createIng)
+  })
+}
+const column2 = (drink) => {
+  (measureList(drink)).forEach(measure => {
+    const createMea = document.createElement('th')
+    createMea.innerText = measure
+    meaTable.append(createMea)
+  })
 }
 
 const handleDrink = (drink) => {
   modalImg.src = drink.strDrinkThumb
-  ingAndMea.innerText = `${ingredientList(drink)}  
-                        ${measureList(drink)}`
   modalName.innerText = drink.strDrink
+  column1(drink)
+  column2(drink)
   modalInst.textContent = drink.strInstructions
 }
-
 
 const ingredientList = (drink) => {
     let ingreKeyArr = Object.keys(drink).filter(keys => {
@@ -115,7 +128,6 @@ const ingredientList = (drink) => {
     }
     return ingreArr
 }
-
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
@@ -140,9 +152,6 @@ const drinkInfo = (drink, drinkName) => {
 
 
 
-
-// S end
-
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
@@ -166,7 +175,7 @@ const fetch4DrinkIngredients = () => {
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  container.innerHTML = "";
+  cards.innerHTML = "";
   userSearchByName();
 });
 
@@ -181,7 +190,7 @@ document.addEventListener("click", (e) => {
     )
       .then((res) => res.json())
       .then((drinkData) => {
-        container.innerHTML = "";
+        cards.innerHTML = "";
         drinkData.drinks.forEach((drink) => {
           renderDrink(drink);
         });
