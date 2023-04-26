@@ -11,8 +11,6 @@ body {
     justify-content: space-evenly;
 }
 
-
-
 #title {
     text-align: center;
     font-size: 30px;
@@ -21,16 +19,16 @@ body {
     padding-bottom: 30px;
 }
 
+
 /* Side-Panel */
 
 #side-panel {
-
 margin: 0;
-padding: 0;
-
-
+padding: 10px;
+padding-top: 20px;
+border: 2px solid black;
+height: fit-content;
 }
-
 
 /* Side-Bar Search*/
 /* .column {
@@ -46,7 +44,6 @@ padding: 0;
     display: inline-block;
     background-color: #d6c394;
     font-size: 16px;
-    border: 1px solid black;
     margin: 0;
 }
 .searchBtn{
@@ -87,16 +84,35 @@ padding: 0;
     display: table;
 }
 #searchNav {
-    border: 1px solid black;
     position: sticky;
 }
 
 /* #filter-section */
-
+.filter-section-form {
+    display: flex;
+}
 
 li {
     list-style-type: none;
     display: flex;
+}
+
+.single-filter {
+    border: black 1px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px ;
+}
+
+.header-single-filter {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
 }
 
 /* Card Section */
@@ -111,17 +127,21 @@ li {
     display: relative;
 }
 .single-card {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     padding: 5px;
     background: var(--white);
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
     scroll-snap-align: start;
     transition: all 0.2s;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+   
 }
 .drink-img {
-    width: 200px
+    width: 250px
 }
 .drink-info {
     position: relative;
