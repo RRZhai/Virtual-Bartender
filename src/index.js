@@ -20,35 +20,54 @@ const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 //card constants (shiyao)
 const container = document.querySelector('#container')
 
+//buttons n stuff constants:
+const surpriseBtn = document.querySelector('#random-filter-btn')
+const popularBtn = document.querySelector('#most-popular-btn')
 //functions
 
 //nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
 //need to figure out why
 
-
 const userSearchByName = () => {
-    input = (formSearchInput.value)
+    const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
    // console.log(URLinput)
     const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
     fetch(searchNameUrl)
     .then(res => res.json())
-    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
-};
+    .then(searchedArray => {
+        searchedArray.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
+
+//is the issue here that because I am using ingredient as a search parameter --> youre just fetching 
 const userSearchByIngredient = () => {
-    input = (formSearchInput.value)
+    const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
     const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?i=' + URLinput
     console.log(URLinput)
     fetch(searchNameUrl)
     .then(res => res.json())
-    .then(searchedArray => searchedArray.drinks.forEach(drink => renderDrink(drink)))
+    .then(searchedArray => {
+        searchedArray.drinks.forEach(drink =>{
+            renderDrink(drink)
+        })
+    })
 }
-
+const fetchPopular = () => {
+    fetch('http://www.thecocktaildb.com/api/json/v2/9973533/popular.php')
+    .then(res => res.json())
+    .then(drinkData => {
+        drinkData.drinks.forEach(drink => {
+            renderDrink(drink)
+        })
+    })
+}
 const fetchDrink = () => {
     fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then(resp => resp.json())
-    // .then(drinkData => {debugger})
     .then(drinkData => {
         drinkData.drinks.forEach(drink => {
             renderDrink(drink)
@@ -60,12 +79,12 @@ const renderDrink = drink => {
     const drinkDtl = document.createElement('div')
     drinkDtl.className = 'single-card'
     container.appendChild(drinkDtl)
+
     const drinkImg = document.createElement('img')
     drinkImg.src = drink.strDrinkThumb
     drinkImg.className = 'drink-img'
     drinkDtl.appendChild(drinkImg)
     
-
     const drinkInfo = document.createElement('div')
     drinkInfo.className = "drink-info"
     drinkDtl.appendChild(drinkInfo)
@@ -86,6 +105,7 @@ const renderDrink = drink => {
     drinkIng.textContent = drink.strIngredient1
 
     drinkImg.addEventListener('click', () => handleDrink(drink))
+    
 }
 
 const handleDrink = (drink) => {
@@ -116,13 +136,10 @@ const ingAndMea = (drink) => {
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-    .then((res) => res.json())
-    .then((randomDrinksArray) =>
-      randomDrinksArray.forEach((oneRandomDrink) =>
-        renderOneDrinkCard(oneRandomDrink)
-      )
-    );
+    .then(res => res.json())
+    .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
+
 
 //** 
 //function renderOneDrinkCard(drinkObj) {}
@@ -135,11 +152,23 @@ function fetchRandom() {
 
 
 ///event listeners:
+popularBtn.addEventListener('click',()=>{
+    container.innerHTML = ''
+    fetchPopular()
+} )
+surpriseBtn.addEventListener('click', () =>{
+    container.innerHTML = '' 
+    fetchRandom()
+    })
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
     
     container.innerHTML = ''
-    userSearchByName()
+    if (searchFilter.value === 'Drink'){
+        userSearchByName()
+    }else{
+        userSearchByIngredient()
+    }
     
 })
 
