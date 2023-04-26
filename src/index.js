@@ -18,7 +18,11 @@ const drinkTypeFtrLst = document.getElementById("type-filter-list");
 const spiritExpandBtn = document.getElementById("spirit-expand-btn");
 
 //card constants (shiyao)
-const container = document.querySelector('#container')
+const cards = document.querySelector('.cards')
+const modalName = document.getElementById('drink-name-modal')
+const modalImg = document.getElementById('img-modal')
+const ingAndMea = document.getElementById('ingredient-measure')
+const modalInst = document.getElementById('instructions-modal')
 
 //buttons n stuff constants:
 const surpriseBtn = document.querySelector('#random-filter-btn')
@@ -73,6 +77,7 @@ const fetchLatest = () =>{
         })
     })
 }
+
 const fetchDrink = () => {
     fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then(resp => resp.json())
@@ -98,49 +103,84 @@ const renderDrink = drink => {
     drinkInfo.className = "drink-info"
     drinkDtl.appendChild(drinkInfo)
 
-    const drinkName = document.createElement('div')
-    drinkName.className = 'drink-name'
-    drinkInfo.appendChild(drinkName)
-
-    const drinkType = document.createElement('li')
-    const drinkIng = document.createElement('li')
-
-    drinkInfo.appendChild(drinkType)
-    drinkInfo.appendChild(drinkIng)
-
-    drinkImg.src = drink.strDrinkThumb
-    drinkName.textContent = drink.strDrink
-    drinkType.textContent = drink.strCategory
-    drinkIng.textContent = drink.strIngredient1
-
-    drinkImg.addEventListener('click', () => handleDrink(drink))
-    
-}
 
 const handleDrink = (drink) => {
-  const drinkIngredient = document.createElement('div')
-  drinkIngredient.className = "ingredient"
-  const drinkReceipe = document.createElement('p')
-  drinkReceipe.className = 'receipe'
-  // drink.after(drinkIngredient)
-  // drink.after(drinkReceipe)
-  drinkReceipe.innerText = drink.strInstructions
-  drinkIngredient.innerText = ingAndMea(drink)
-  // `${drink.strMeasure1} ${drink.strIngredient1}, 
-  // ${drink.strMeasure2} ${drink.strIngredient2}, 
-  // ${drink.strMeasure3} ${drink.strIngredient3}, 
-  // ${drink.strMeasure4} ${drink.strIngredient4}, 
-  // ${drink.strMeasure5} ${drink.strIngredient4}`
+  modalImg.src = drink.strDrinkThumb
+  ingAndMea.innerText = `${ingredientList(drink)}  
+                        ${measureList(drink)}`
+  modalName.innerText = drink.strDrink
+  modalInst.textContent = drink.strInstructions
 }
 
-const ingAndMea = (drink) => {
-    const ingreArr = Object.keys(drink).filter(singleIng => {
-        return singleIng[12] === 't'
+
+const ingredientList = (drink) => {
+    let ingreKeyArr = Object.keys(drink).filter(keys => {
+        return keys[12] === 't'
     })
+    const ingreArr = []
+    for (let i = 0; i < ingreKeyArr.length; i++ ){
+      if (drink[ingreKeyArr[i]]){
+        ingreArr.push(drink[ingreKeyArr[i]])
+      }
+    }
     return ingreArr
 }
 
 
+    drinkImg.addEventListener('click', () => handleDrink(drink))
+    
+
+const measureList = (drink) => {
+  let meaKeyArr = Object.keys(drink).filter(keys => {
+      return keys[9] === 'e'
+  })
+  const meaArr = []
+  for (let i = 0; i < meaKeyArr.length; i++ ){
+    if (drink[meaKeyArr[i]]){
+      meaArr.push(drink[meaKeyArr[i]])
+    }
+  }
+  return meaArr
+}
+
+const drinkInfo = (drink, drinkName) => {
+  const drinkType = document.createElement('li')
+  drinkType.textContent = drink.strAlcoholic
+  const drinkIng1 = document.createElement('li')
+  drinkIng1.textContent = drink.strIngredient1
+  drinkName.append(drinkType, drinkIng1)
+}
+
+const renderDrink = drink => {
+  const card = document.createElement('div')
+  card.className = 'single-card'
+  cards.appendChild(card)
+  const drinkImg = document.createElement('img')
+  drinkImg.className = 'drink-img'
+  drinkImg.src = drink.strDrinkThumb
+  const drinkName = document.createElement('div')
+  drinkName.className = 'drink-info'
+  drinkName.innerText = drink.strDrink
+  card.append(drinkImg, drinkName)
+  drinkInfo(drink, drinkName)
+  drinkImg.addEventListener('click', () => handleDrink(drink))
+}
+
+const fetchDrink = () => {
+  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
+  .then(resp => resp.json())
+  // .then(drinkData => {debugger})
+  .then(drinkData => {
+      drinkData.drinks.forEach(drink => {
+        renderDrink(drink);
+        // ingredientList(drink);
+        // measureList(drink)
+      })
+  })
+}
+fetchDrink()
+
+// S end
 
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
@@ -148,7 +188,6 @@ function fetchRandom() {
     .then(res => res.json())
     .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
-
 
 //** 
 //function renderOneDrinkCard(drinkObj) {}
