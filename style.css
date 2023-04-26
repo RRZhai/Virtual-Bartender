@@ -2,41 +2,43 @@
 :root{
     background-color: #F0DBA5;
 }
-#cards {
-    display: relative;
+
+.cards{
+    display: flex;
+    gap: 5px;
+
+    overflow-y: auto;
+    overscroll-behavior-inline: contain;
+
+    padding: 2em;
 }
-.single-card {
-    width: 500px;
-    height: 500px;
-    padding: 20px;
-    background: var(--white);
+
+.drink-img {
+    position: relative;
+    width: relative;
+    height: 200px;
+    padding: 10px;
+    background: white;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
     scroll-snap-align: start;
     transition: all 0.2s;
 }
-
-.drink-img {
-    width: 500px
+.drink-img:hover{
+    opacity: 0.5;
 }
 
 .drink-info {
     position: relative;
-    left: 300px;
-    top: -150px;
-    width: 200px;
-    height: relative;
-    background-color:white;
-    opacity: 60%;
-    font-size: 25px;
-    border: 10px;
+    background-color: white;
+    font-size: 12px;
+    width: 90px;
+    right: -120px;
+    bottom: 100px;
+    opacity: 0.8;
 }
-.receipe {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
-}
+
+
 .ingredient {
     position:relative;
     left: 600px;
