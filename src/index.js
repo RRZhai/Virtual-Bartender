@@ -26,9 +26,6 @@ const popularBtn = document.querySelector('#most-popular-btn')
 const latestDrinksBtn = document.querySelector('#new-recipies-btn')
 //functions
 
-//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
-//need to figure out why
-
 const userSearchByName = (drinkName) => {
     const input = (formSearchInput.value)
     const URLinput = encodeURI(input.replace(' ','_'));
@@ -44,7 +41,6 @@ const userSearchByName = (drinkName) => {
     })
 }
 
-//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into 
 const userSearchByIngredient = () => {
     const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
@@ -86,6 +82,7 @@ const fetchDrink = () => {
         })
     })
 }
+
 fetchDrink()
 const renderDrink = drink => {
     const drinkDtl = document.createElement('div')
@@ -178,7 +175,6 @@ surpriseBtn.addEventListener('click', () =>{
     })
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    
     container.innerHTML = ''
     if (searchFilter.value === 'Drink'){
         userSearchByName()
