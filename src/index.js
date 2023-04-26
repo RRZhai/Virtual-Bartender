@@ -1,4 +1,3 @@
-
 // LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
 //////global constants/////
 
@@ -10,20 +9,14 @@ const ingrFilter = document.querySelector("#ingrFilter");
 const nameFilter = document.querySelector("#nameFilter");
 const searchForm = document.querySelector("#searchForm");
 
-//Side panel constants (ren)
-// const sidePanelContainer = document.getElementById("filter-section");
-// const hasAlcoholFtrLst = document.getElementById("alcohol-content-list");
-// const spiritFtrLst = document.getElementById("spirit-filter-list");
-// const drinkTypeFtrLst = document.getElementById("type-filter-list");
-// const spiritExpandBtn = document.getElementById("spirit-expand-btn");
-
 //card constants (shiyao)
-
 const cards = document.querySelector('.cards')
 const modalName = document.getElementById('drink-name-modal')
 const modalImg = document.getElementById('img-modal')
 const ingAndMea = document.getElementById('ingredient-measure')
 const modalInst = document.getElementById('instructions-modal')
+const meaTable = document.querySelector('.Measure')
+const ingTable = document.getElementById('ingredient')
 
 //buttons n stuff constants:
 const surpriseBtn = document.querySelector('#random-filter-btn')
@@ -78,7 +71,7 @@ const userSearchByIngredient = () => {
     })
 }
 
-const renderDrink = drink => {
+const renderDrink = (drink) => {
   const card = document.createElement('div')
   card.className = 'single-card'
   cards.appendChild(card)
@@ -90,17 +83,40 @@ const renderDrink = drink => {
   drinkName.innerText = drink.strDrink
   card.append(drinkImg, drinkName)
   drinkInfo(drink, drinkName)
+  
+  
+  card.dataset.checkBoxTags = [
+  drink.strAlcoholic,
+  drink.strIngredient1,
+  drink.strIngredient2,
+  drink.strCategory,
+];
+  
   drinkImg.addEventListener('click', () => handleDrink(drink))
+}
+
+const column1 = (drink) => {
+  (ingredientList(drink)).forEach(ingredient => {
+    const createIng = document.createElement('th')
+    createIng.innerText = ingredient
+    ingTable.append(createIng)
+  })
+}
+const column2 = (drink) => {
+  (measureList(drink)).forEach(measure => {
+    const createMea = document.createElement('th')
+    createMea.innerText = measure
+    meaTable.append(createMea)
+  })
 }
 
 const handleDrink = (drink) => {
   modalImg.src = drink.strDrinkThumb
-  ingAndMea.innerText = `${ingredientList(drink)}  
-                        ${measureList(drink)}`
   modalName.innerText = drink.strDrink
+  column1(drink)
+  column2(drink)
   modalInst.textContent = drink.strInstructions
 }
-
 
 const ingredientList = (drink) => {
     let ingreKeyArr = Object.keys(drink).filter(keys => {
@@ -114,7 +130,6 @@ const ingredientList = (drink) => {
     }
     return ingreArr
 }
-
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
@@ -139,9 +154,6 @@ const drinkInfo = (drink, drinkName) => {
 
 
 
-
-// S end
-
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
@@ -165,7 +177,7 @@ const fetch4DrinkIngredients = () => {
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  container.innerHTML = "";
+  cards.innerHTML = "";
   userSearchByName();
 });
 
@@ -180,7 +192,7 @@ document.addEventListener("click", (e) => {
     )
       .then((res) => res.json())
       .then((drinkData) => {
-        container.innerHTML = "";
+        cards.innerHTML = "";
         drinkData.drinks.forEach((drink) => {
           renderDrink(drink);
         });
@@ -196,5 +208,7 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
+
+
 
 
