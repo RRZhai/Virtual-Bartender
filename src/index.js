@@ -193,18 +193,3 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
-
-const cbFromArray = [];
-
-// function fillArray ()
-const keyArray = []
-
-function getKeys (drink) {
-  for (const key in drink) {
-    if (ke.contains(strIngredient) {
-
-    })
-    keyArray.push(key)
-    for
-  }
-}
