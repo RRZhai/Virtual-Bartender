@@ -36,7 +36,6 @@ const fetchDrink = () => {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then((resp) => resp.json())
     .then((drinkData) => {
-      console.log(drinkData);
       drinkData.drinks.forEach((drink) => {
         renderDrink(drink);
       });
@@ -82,10 +81,8 @@ const userSearchByIngredient = () => {
 };
 
 const renderDrink = (drink) => {
-  console.log(drink);
   const card = document.createElement("div");
   card.className = "single-card";
-  cards.appendChild(card);
   const drinkImg = document.createElement("img");
   drinkImg.className = "drink-img";
   drinkImg.src = drink.strDrinkThumb;
@@ -94,7 +91,16 @@ const renderDrink = (drink) => {
   drinkName.innerText = drink.strDrink;
   card.append(drinkImg, drinkName);
   drinkInfo(drink, drinkName);
+
+  card.dataset.checkBoxTags = [
+    drink.strAlcoholic,
+    drink.strIngredient1,
+    drink.strIngredient2,
+    drink.strCategory,
+  ];
+
   drinkImg.addEventListener("click", () => handleDrink(drink));
+  cards.appendChild(card);
 };
 
 const handleDrink = (drink) => {
@@ -156,7 +162,7 @@ const fetch4DrinkIngredients = () => {
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  container.innerHTML = "";
+  cards.innerHTML = "";
   userSearchByName();
 });
 
@@ -171,8 +177,7 @@ document.addEventListener("click", (e) => {
     )
       .then((res) => res.json())
       .then((drinkData) => {
-        container.innerHTML = "";
-        console.log(drinkData);
+        cards.innerHTML = "";
         drinkData.drinks.forEach((drink) => {
           renderDrink(drink);
         });
@@ -188,3 +193,18 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
+
+const cbFromArray = [];
+
+// function fillArray ()
+const keyArray = []
+
+function getKeys (drink) {
+  for (const key in drink) {
+    if (ke.contains(strIngredient) {
+
+    })
+    keyArray.push(key)
+    for
+  }
+}
