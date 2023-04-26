@@ -173,9 +173,19 @@ h3 {
 
 
 /* Modal */
+#drink-name-modal {
+    font-size:xx-large
+}
 
+#img-modal{
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+}
 
-
+#ingredient-measure{
+    font-size: larger;
+}
 
 
 
