@@ -132,6 +132,7 @@ h3 {
     overflow-y: auto;
     overscroll-behavior-inline: contain;
     padding: 20px;
+    height: 235px;
 }
 .single-card {
     height: 222px;
