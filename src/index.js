@@ -1,3 +1,4 @@
+
 // LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
 //////global constants/////
 
@@ -195,4 +196,5 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
+
 
