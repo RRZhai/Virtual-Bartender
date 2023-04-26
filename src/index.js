@@ -55,6 +55,7 @@ const userSearchByName = (drinkName) => {
     fetch(searchNameUrl)
     .then(res => res.json())
     .then(searchedArray => {
+      debugger
         searchedArray.drinks.forEach(drink => {
             renderDrink(drink)
         })
@@ -77,7 +78,7 @@ const userSearchByIngredient = () => {
     })
 }
 
-const renderDrink = drink => {
+const renderDrink = (drink) => {
   const card = document.createElement('div')
   card.className = 'single-card'
   cards.appendChild(card)
@@ -90,6 +91,7 @@ const renderDrink = drink => {
   card.append(drinkImg, drinkName)
   drinkInfo(drink, drinkName)
   drinkImg.addEventListener('click', () => handleDrink(drink))
+  console.log(drink)
 }
 
 const handleDrink = (drink) => {
