@@ -29,11 +29,12 @@ const latestDrinksBtn = document.querySelector('#new-recipies-btn')
 //nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
 //need to figure out why
 
-const userSearchByName = () => {
+const userSearchByName = (drinkName) => {
     const input = (formSearchInput.value)
-    URLinput = encodeURI(input.replace(' ','_'));
+    const URLinput = encodeURI(input.replace(' ','_'));
    // console.log(URLinput)
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + input
+   const query = drinkName ? drinkName : URLinput 
+   const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=' + query
     fetch(searchNameUrl)
     .then(res => res.json())
     .then(searchedArray => {
@@ -47,14 +48,15 @@ const userSearchByName = () => {
 const userSearchByIngredient = () => {
     const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
-    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/search.php?i=' + URLinput
+    const searchNameUrl = 'https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=' + URLinput
     console.log(URLinput)
     fetch(searchNameUrl)
     .then(res => res.json())
     .then(searchedArray => {
-        searchedArray.drinks.forEach(drink =>{
-            console.log(drink.strDrink)
+        const namesArray = searchedArray.drinks.map(drink =>{
+        return drink.strDrink
         })
+        namesArray.forEach(userSearchByName)
     })
 }
 const fetchPopular = () => {
