@@ -1,3 +1,4 @@
+
 // LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
 //////global constants/////
 
@@ -30,6 +31,7 @@ const popularBtn = document.querySelector('#most-popular-btn')
 const latestDrinksBtn = document.querySelector('#new-recipies-btn')
 
 //functions
+
 //This is the initial fetch for Random on page load but also to be used for the random preset
 const fetchDrink = () => {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
@@ -41,6 +43,9 @@ const fetchDrink = () => {
     });
 };
 fetchDrink();
+
+//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
+//need to figure out why
 
 const userSearchByName = (drinkName) => {
     const input = (formSearchInput.value)
@@ -57,6 +62,7 @@ const userSearchByName = (drinkName) => {
     })
 }
 
+//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into 
 const userSearchByIngredient = () => {
     const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
@@ -95,6 +101,7 @@ const handleDrink = (drink) => {
   modalInst.textContent = drink.strInstructions
 }
 
+
 const ingredientList = (drink) => {
     let ingreKeyArr = Object.keys(drink).filter(keys => {
         return keys[12] === 't'
@@ -107,6 +114,7 @@ const ingredientList = (drink) => {
     }
     return ingreArr
 }
+
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
@@ -129,12 +137,18 @@ const drinkInfo = (drink, drinkName) => {
   drinkName.append(drinkType, drinkIng1)
 }
 
+
+
+
+// S end
+
 //Initial Page fetch with 10 random drinks for
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then(res => res.json())
     .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
+
 
 //search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
 //order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
@@ -147,6 +161,7 @@ const fetch4DrinkIngredients = () => {
 };
 
 ///event listeners:
+
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -183,3 +198,5 @@ document.addEventListener("change", (e) => {
 });
 
 
+
+>>>>>>> a2b7c7f3c387ae2d62336ff04d0df2a2edc26d13
