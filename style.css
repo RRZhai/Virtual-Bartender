@@ -181,12 +181,22 @@ h3 {
     position: relative;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    width: fit-content;
 }
 
 #ingredient-measure{
     font-size: larger;
 }
 
+table{
+    /* border: 1px solid; */
+    border-collapse: collapse;
+    width:100%;
+}
+
+#ingredient {
+    left: 100px;
+}
 
 
 
