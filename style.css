@@ -1,23 +1,23 @@
 /* Global */
 
 :root{
-    background-color: #F0DBA5;
+  background-color: #F0DBA5;
 }
 
 
 body {
-    font-family: 'Recoleta';
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  font-family: 'Recoleta';
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #title {
-    text-align: center;
-    font-size: 30px;
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 30px;
+  text-align: center;
+  font-size: 30px;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 
 
@@ -31,95 +31,82 @@ border: 2px solid black;
 height: fit-content;
 width: 22%;
 }
+#searchNav {
+  position: sticky;
+  display: flex;
+  width: auto;
+  border: 0 none;
+  padding: 0 none;
+  margin: 0 none;
+}
 
-/* Side-Bar Search*/
-/* .column {
-    float: left;
-    width:max-content;
-    border: 1px solid black;
-    position: sticky;
-} */
-.searchForm {
-    display: flex;
+
+#searchForm input{
+  display: inline-block;
+  font-size: 16px;
+  border: 0 none;;
+  box-sizing: border-box;
+  float: left;
+  height: 25px;
+  width: 90%;
 }
-#searchForm{
-    display: inline-block;
-    background-color: #d6c394;
-    font-size: 16px;
-    margin: 0;
-}
-.searchBtn{
-    margin:0;
+#searchForm button{
+  display: inline-block;
+  position: relative;
+  width: 10%;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  margin: 0;
+  float: left;
+  height: 25px;
+  box-sizing: border-box;
 }
 #searchFilter{
-    margin-left: 0;
-    margin-right: 0;
-    display: inline-block;
-    
-    background-color: #d6c394;
-    border: 1px solid black;
-    
-}
-#searchFilter:hover {
-    background-color: #c29e3a;
-}
-.searchForm input[type='text']{
-    display: inline-block;
-    background-color: #d6c394;
-    font-size: 16px;
-    border: 1px solid black;
-}
-.searchForm button{
-    display: inline-block;
-    background-color: #d6c394;
-    padding-right: 3px;
-    width: 10%;
-    font: 10px;
-    border: 1px solid black;
-}
-.searchForm button:hover {
-    background-color: #c29e3a;
-}
-.searchForm::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-#searchNav {
-    position: sticky;
-}
+  padding: 0;
+  height: 25px;
+  display: block;
+  width: 100%;
 
+  text-align: center;
+}
+#searchForm::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 /* #filter-section */
 .filter-section-form {
-    display: flex;
+  display: flex;
 }
 
 li {
-    list-style-type: none;
-    display: flex;
+  list-style-type: none;
+  display: flex;
 }
 
 .single-filter {
-    border: black 1px solid;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px ;
+  border: black 1px solid;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px ;
 }
 
 .header-single-filter {
-    text-align: center;
+  text-align: center;
 }
 
 h3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px;
-    border-bottom-style: solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
 }
 
 /* Card Section */
 
 #container {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -136,43 +123,49 @@ h3 {
 }
 .single-card {
     height: 222px;
+
 }
 
 .drink-img {
-    position: relative;
-    width: relative;
-    height: 200px;
-    padding: 10px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
-    scroll-snap-align: start;
-    transition: all 0.2s;
+  position: relative;
+  width: relative;
+  height: 200px;
+  padding: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
 }
 .drink-img:hover{
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .drink-info {
-    position: relative;
-    background-color: white;
-    font-size: 12px;
-    width: 90px;
-    right: -120px;
-    bottom: 100px;
-    opacity: 0.8;
+  position: relative;
+  background-color: white;
+  font-size: 12px;
+  width: 90px;
+  right: -120px;
+  bottom: 100px;
+  opacity: 0.8;
 }
 
 
 .ingredient {
-    position:relative;
-    left: 600px;
-    top: -600px;
-    font-size: 25px;
+  position:relative;
+  left: 600px;
+  top: -600px;
+  font-size: 25px;
 }
 
 
 /* Modal */
+#drink-name-modal {
+  font-size:xx-large
+}
+
+
 #drink-name-modal {
     font-size:xx-large
 }
@@ -181,17 +174,24 @@ h3 {
     position: relative;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    width: 700px;
 }
 
 #ingredient-measure{
     font-size: larger;
+
+}
+
+td{
+    padding-inline: 15px;
+}
+
+#instructions-modal{
+    font-size: larger;
+    width: 700px;
 }
 
 
-
-
-
-/* Not Categorized */
 
 
 
