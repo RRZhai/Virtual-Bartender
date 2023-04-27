@@ -208,15 +208,26 @@ const pageDrinksArray = [];
 const currentCheckArray = [];
 
 document.addEventListener("change", (e) => {
-  const isCheckBoxClick = e.target.classList.contains("filter-input");
+  let isCheckBoxClick = e.target.classList.contains("filter-input");
   if (isCheckBoxClick) {
-    pageDrinksArray.forEach((pageDrink) =>
-      checkFilterMatch(pageDrink.dataset.checkBoxTags)
-    );
+    pageDrinksArray.forEach((pageDrink) => checkFilterMatch(pageDrink));
   }
 });
 
-function checkFilterMatch(drinkTags) {}
+function checkFilterMatch(drinkCardDiv) {
+  let activeCardDiv = [];
+  activeCardDiv.push(drinkCardDiv.dataset.checkBoxTags);
+  // let activeCheckBArray = [];
+  // activeCheckBArray.push(checkBoxClick());
+  const filterMatchesArray = activeCardDiv.filter((x) =>
+    checkBoxClick().includes(x)
+  );
+  if (filterMatchesArray.length > 0) {
+    null;
+  } else {
+    drinkCardDiv.classList.add("hidden");
+  }
+}
 
 function checkBoxClick() {
   const currentCheckArray = [];
