@@ -19,9 +19,11 @@ const meaTable = document.querySelector(".Measure");
 const ingTable = document.getElementById("ingredient");
 
 //buttons n stuff constants:
-const surpriseBtn = document.querySelector("#random-filter-btn");
-const popularBtn = document.querySelector("#most-popular-btn");
-const latestDrinksBtn = document.querySelector("#new-recipies-btn");
+// const surpriseBtn = document.querySelector("#random-filter-btn");
+// const popularBtn = document.querySelector("#most-popular-btn");
+// const latestDrinksBtn = document.querySelector("#new-recipies-btn");
+
+//filter constants
 
 //functions
 
@@ -93,7 +95,7 @@ const renderDrink = (drink) => {
     drink.strIngredient2,
     drink.strCategory,
   ];
-
+  // pageDrinksArray.push(card);
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
@@ -203,11 +205,43 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//filter section
-
-const checkBoxForm = document.getElementById("filter-section-form");
-
 document.addEventListener("change", (e) => {
-  const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
-  console.log("checkbox got clicked"); // This works!
+  const isCheckBoxClick = e.target.classList.contains("filter-input");
+  if (isCheckBoxClick) {
+    console.log("I got clicked");
+    //     checkBoxClick();
+  }
 });
+const isVodka = document.getElementById("vodka");
+const isWhiskey = document.getElementById("whiskey");
+const isRum = document.getElementById("rum");
+const isGin = document.getElementById("vodka");
+const isScotch = document.getElementById("vodka");
+const isTequila = document.getElementById("vodka");
+const isBourbon = document.getElementById("vodka");
+const isBrandy = document.getElementById("vodka");
+const isAlcoholic = document.getElementById("vodka");
+const isNonAlcoholic = document.getElementById("vodka");
+const isOptionalAlcohol = document.getElementById("vodka");
+const isCocktail = document.getElementById("vodka");
+const isShot = document.getElementById("vodka");
+const isPunch = document.getElementById("vodka");
+
+// function checkBoxClick() {
+//   isVodka ? currentCheckArray.push("Vokda") : null;
+//   isWhiskey ? currentCheckArray.push("Whiskey") : null;
+//   isRum ? currentCheckArray.push("Rum") : null;
+//   isGin ? currentCheckArray.push("Gin") : null;
+//   isScotch ? currentCheckArray.push("Gin") : null;
+//   isTequila ? currentCheckArray.push("Tequila") : null;
+//   isBourbon ? currentCheckArray.push("Bourbon") : null;
+//   isBrandy ? currentCheckArray.push("Brandy") : null;
+//   isAlcoholic ? currentCheckArray.push("Alcoholic") : null;
+//   isNonAlcoholic ? currentCheckArray.push("Non alcoholic") : null;
+//   isOptionalAlcohol ? currentCheckArray.push("Optional alcohol") : null;
+//   isCocktail ? currentCheckArray.push("Cocktail") : null;
+//   isShot ? currentCheckArray.push("Shot") : null;
+//   isPunch ? currentCheckArray.push("Punch / Party Drink") : null;
+
+//   console.log(currentCheckArray);
+// }
