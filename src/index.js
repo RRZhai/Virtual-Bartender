@@ -11,6 +11,7 @@ const searchForm = document.querySelector("#searchForm");
 
 //card constants (shiyao)
 const cards = document.querySelector('.cards')
+const modelDtl = document.querySelector('#detailed-modal')
 const modalName = document.getElementById('drink-name-modal')
 const modalImg = document.getElementById('img-modal')
 const ingAndMea = document.getElementById('ingredient-measure')
@@ -92,26 +93,34 @@ const renderDrink = (drink) => {
 }
 
 const column1 = (drink) => {
+  ingTable.innerHTML = '';
   (ingredientList(drink)).forEach(ingredient => {
-    const createIng = document.createElement('th')
+    const createIng = document.createElement('td')
     createIng.innerText = ingredient
     ingTable.append(createIng)
   })
 }
 const column2 = (drink) => {
+  meaTable.innerHTML = '';
   (measureList(drink)).forEach(measure => {
-    const createMea = document.createElement('th')
+    const createMea = document.createElement('td')
     createMea.innerText = measure
     meaTable.append(createMea)
   })
 }
 
 const handleDrink = (drink) => {
+
+  modalImg.remove()
+  modalInst.remove()
+
   modalImg.src = drink.strDrinkThumb
   modalName.innerText = drink.strDrink
   column1(drink)
   column2(drink)
   modalInst.textContent = drink.strInstructions
+
+  modelDtl.append(modalInst, modalImg)
 }
 
 const ingredientList = (drink) => {
@@ -129,7 +138,8 @@ const ingredientList = (drink) => {
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
-      return keys[9] === 'e'
+
+      return keys[3] === 'M'
   })
   const meaArr = []
   for (let i = 0; i < meaKeyArr.length; i++ ){
