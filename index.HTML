@@ -17,14 +17,13 @@
   <div id="side-panel">
     <div id='searchNav' class='column'>
       <form id='searchForm'>
-        <input type='text' placeholder='search' id='searchInput'>
+        <input type='text' placeholder='search:' id='searchInput'>
+          <button type="submit" class='searchBtn'>&#128269;</button>
         <select class="form-select" id="searchFilter">
+          <option id="blankDD" value="blank">Search Options</option>
           <option id='drinkDD' value="Drink">Drink Name</option>
           <option id='ingrDD' value="Ingredient">Ingredient</option>
         </select>
-        <button type="submit" class='searchBtn'>
-          &#128269;
-        </button>
       </form>
     </div>
 
