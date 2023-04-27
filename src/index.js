@@ -95,7 +95,6 @@ const renderDrink = (drink) => {
     drink.strIngredient2,
     drink.strCategory,
   ];
-  pageDrinksArray.push(card);
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
@@ -204,29 +203,45 @@ document.addEventListener("click", (e) => {
       });
   }
 });
-const pageDrinksArray = [];
-const currentCheckArray = [];
-
 document.addEventListener("change", (e) => {
   let isCheckBoxClick = e.target.classList.contains("filter-input");
   if (isCheckBoxClick) {
-    pageDrinksArray.forEach((pageDrink) => checkFilterMatch(pageDrink));
+    const pageDrinksArray = Array.from(
+      document.querySelectorAll(`[data-check-box-tags]`)
+    );
+    console.log(pageDrinksArray);
+    const currentCheckArray = checkBoxClick();
+    pageDrinksArray.forEach((pageDrink) =>
+      setCardVisibility(pageDrink, currentCheckArray)
+    );
+  } else {
+    console.log("I dont think I'm a checkbox");
   }
 });
 
-function checkFilterMatch(drinkCardDiv) {
-  let activeCardDiv = [];
-  activeCardDiv.push(drinkCardDiv.dataset.checkBoxTags);
-  // let activeCheckBArray = [];
-  // activeCheckBArray.push(checkBoxClick());
-  const filterMatchesArray = activeCardDiv.filter((x) =>
-    checkBoxClick().includes(x)
-  );
-  if (filterMatchesArray.length > 0) {
-    null;
+function setCardVisibility(drinkCardDiv, currentCheckArray) {
+  const activeCardAttr = drinkCardDiv.dataset.checkBoxTags;
+  const filteredArrayMatches = activeCardAttr
+    .split(",")
+    .filter((value) => currentCheckArray.includes(value));
+  if (filteredArrayMatches.length > 0) {
+    drinkCardDiv.classList.remove("hidden");
   } else {
     drinkCardDiv.classList.add("hidden");
   }
+
+  //   let activeCardAttr = [];
+  //   activeCardDiv.split(drinkCardDiv.dataset.checkBoxTags);
+  //   // let activeCheckBArray = [];
+  //   // activeCheckBArray.push(checkBoxClick());
+  //   const filterMatchesArray = activeCardDiv.filter((x) =>
+  //     currentCheckArray.includes(x)
+  //   );
+  //   if (filterMatchesArray.length > 0) {
+  //     null;
+  //   } else {
+  //     drinkCardDiv.classList.add("hidden");
+  //   }
 }
 
 function checkBoxClick() {
@@ -269,6 +284,5 @@ function checkBoxClick() {
   document.getElementById("punch").checked
     ? currentCheckArray.push("Punch / Party Drink")
     : null;
-
   return currentCheckArray;
 }
