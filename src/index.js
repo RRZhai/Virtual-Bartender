@@ -11,6 +11,7 @@ const searchForm = document.querySelector("#searchForm");
 
 //card constants (shiyao)
 const cards = document.querySelector('.cards')
+const modelDtl = document.querySelector('#detailed-modal')
 const modalName = document.getElementById('drink-name-modal')
 const modalImg = document.getElementById('img-modal')
 const ingAndMea = document.getElementById('ingredient-measure')
@@ -113,11 +114,14 @@ const column2 = (drink) => {
 }
 
 const handleDrink = (drink) => {
+  modalImg.remove()
+  modalInst.remove()
   modalImg.src = drink.strDrinkThumb
   modalName.innerText = drink.strDrink
   column1(drink)
   column2(drink)
   modalInst.textContent = drink.strInstructions
+  modelDtl.append(modalInst, modalImg)
 }
 
 const ingredientList = (drink) => {

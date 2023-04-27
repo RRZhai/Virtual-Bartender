@@ -173,6 +173,7 @@ h3 {
 
 
 /* Modal */
+
 #drink-name-modal {
     font-size:xx-large
 }
@@ -181,7 +182,7 @@ h3 {
     position: relative;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
-    width: fit-content;
+    width: 700px;
 }
 
 #ingredient-measure{
@@ -194,6 +195,7 @@ td{
 
 #instructions-modal{
     font-size: larger;
+    width: 700px;
 }
 
 
