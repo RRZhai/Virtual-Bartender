@@ -95,7 +95,7 @@ const renderDrink = (drink) => {
     drink.strIngredient2,
     drink.strCategory,
   ];
-  // pageDrinksArray.push(card);
+  pageDrinksArray.push(card);
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
@@ -204,44 +204,60 @@ document.addEventListener("click", (e) => {
       });
   }
 });
+const pageDrinksArray = [];
+const currentCheckArray = [];
 
 document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input");
   if (isCheckBoxClick) {
-    console.log("I got clicked");
-    //     checkBoxClick();
+    pageDrinksArray.forEach((pageDrink) =>
+      checkFilterMatch(pageDrink.dataset.checkBoxTags)
+    );
   }
 });
-const isVodka = document.getElementById("vodka");
-const isWhiskey = document.getElementById("whiskey");
-const isRum = document.getElementById("rum");
-const isGin = document.getElementById("vodka");
-const isScotch = document.getElementById("vodka");
-const isTequila = document.getElementById("vodka");
-const isBourbon = document.getElementById("vodka");
-const isBrandy = document.getElementById("vodka");
-const isAlcoholic = document.getElementById("vodka");
-const isNonAlcoholic = document.getElementById("vodka");
-const isOptionalAlcohol = document.getElementById("vodka");
-const isCocktail = document.getElementById("vodka");
-const isShot = document.getElementById("vodka");
-const isPunch = document.getElementById("vodka");
 
-// function checkBoxClick() {
-//   isVodka ? currentCheckArray.push("Vokda") : null;
-//   isWhiskey ? currentCheckArray.push("Whiskey") : null;
-//   isRum ? currentCheckArray.push("Rum") : null;
-//   isGin ? currentCheckArray.push("Gin") : null;
-//   isScotch ? currentCheckArray.push("Gin") : null;
-//   isTequila ? currentCheckArray.push("Tequila") : null;
-//   isBourbon ? currentCheckArray.push("Bourbon") : null;
-//   isBrandy ? currentCheckArray.push("Brandy") : null;
-//   isAlcoholic ? currentCheckArray.push("Alcoholic") : null;
-//   isNonAlcoholic ? currentCheckArray.push("Non alcoholic") : null;
-//   isOptionalAlcohol ? currentCheckArray.push("Optional alcohol") : null;
-//   isCocktail ? currentCheckArray.push("Cocktail") : null;
-//   isShot ? currentCheckArray.push("Shot") : null;
-//   isPunch ? currentCheckArray.push("Punch / Party Drink") : null;
+function checkFilterMatch(drinkTags) {}
 
-//   console.log(currentCheckArray);
-// }
+function checkBoxClick() {
+  const currentCheckArray = [];
+  document.getElementById("vodka").checked
+    ? currentCheckArray.push("Vodka")
+    : null;
+  document.getElementById("whiskey").checked
+    ? currentCheckArray.push("Whiskey")
+    : null;
+  document.getElementById("rum").checked ? currentCheckArray.push("Rum") : null;
+  document.getElementById("gin").checked ? currentCheckArray.push("Gin") : null;
+  document.getElementById("scotch").checked
+    ? currentCheckArray.push("Scotch")
+    : null;
+  document.getElementById("tequila").checked
+    ? currentCheckArray.push("Tequila")
+    : null;
+  document.getElementById("bourbon").checked
+    ? currentCheckArray.push("Broubon")
+    : null;
+  document.getElementById("brandy").checked
+    ? currentCheckArray.push("Brandy")
+    : null;
+  document.getElementById("alcoholic").checked
+    ? currentCheckArray.push("Alcoholic")
+    : null;
+  document.getElementById("non-alcoholic").checked
+    ? currentCheckArray.push("Non alcoholic")
+    : null;
+  document.getElementById("optional-alcohol").checked
+    ? currentCheckArray.push("Optional Alcohol")
+    : null;
+  document.getElementById("cocktail").checked
+    ? currentCheckArray.push("Cocktail")
+    : null;
+  document.getElementById("shot").checked
+    ? currentCheckArray.push("Shot")
+    : null;
+  document.getElementById("punch").checked
+    ? currentCheckArray.push("Punch / Party Drink")
+    : null;
+
+  return currentCheckArray;
+}
