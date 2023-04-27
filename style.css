@@ -102,6 +102,9 @@ h3 {
   border-bottom: 1px;
   border-bottom-style: solid;
 }
+.hidden {
+    display: none;
+}
 
 /* Card Section */
 

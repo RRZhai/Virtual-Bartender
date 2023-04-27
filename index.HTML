@@ -49,14 +49,15 @@
             <h3 id="alcohol-content-header">Alcoholic?</h3>
             <!-- <button class="expand-collapse-filter">+</button>
             <button class="clear-filter-btns">clear</button> -->
+
           </div>
-          <ul id="alcohol-content-filter-list" class="single-filter-list hidden">
-            <li><input type="checkbox" class="filter-intput" value="Alcoholic" />Alcoholic</li>
+          <ul id="alcohol-content-filter-list" class="single-filter-list">
+            <li><input id="alcoholic" type="checkbox" class="filter-input" value="Alcoholic" />Alcoholic</li>
             <li>
-              <input type="checkbox" class="filter-intput" value="Non alcoholic" />Non-Alcoholic
+              <input id="non-alcoholic" type="checkbox" class="filter-input" value="Non alcoholic" />Non-Alcoholic
             </li>
             <li>
-              <input type="checkbox" class="filter-intput" value="Optional Alcohol" />Alcohol
+              <input id="optional-alcohol" type="checkbox" class="filter-input" value="Optional Alcohol" />Alcohol
               Optional
             </li>
           </ul>
@@ -68,15 +69,15 @@
               +
             </button> -->
           </div>
-          <ul id="spirit-filter-list" class="single-filter-list hidden">
-            <li><input type="checkbox" class="filter-intput" value="Vodka" />Vodka</li>
-            <li><input type="checkbox" class="filter-intput" value="Whiskey" />Whiskey</li>
-            <li><input type="checkbox" class="filter-intput" value="Rum" />Rum</li>
-            <li><input type="checkbox" class="filter-intput" value="Gin" />Gin</li>
-            <li><input type="checkbox" class="filter-intput" value="Scotch" />Scotch</li>
-            <li><input type="checkbox" class="filter-intput" value="Tequila" />Tequila</li>
-            <li><input type="checkbox" class="filter-intput" value="Bourbon" />Bourbon</li>
-            <li><input type="checkbox" class="filter-intput" value="Brandy" />Brandy</li>
+          <ul id="spirit-filter-list" class="single-filter-list">
+            <li><input id="vodka" type="checkbox" name="Vodka" class="filter-input" value="Vodka" />Vodka</li>
+            <li><input id="whiskey" type="checkbox" name="whiskey" class="filter-input" value="Whiskey" />Whiskey</li>
+            <li><input id="rum" type="checkbox" name="rum" class="filter-input" value="Rum" />Rum</li>
+            <li><input id="gin" type="checkbox" name="gin" class="filter-input" value="Gin" />Gin</li>
+            <li><input id="scotch" type="checkbox" name="scotch" class="filter-input" value="Scotch" />Scotch</li>
+            <li><input id="tequila" type="checkbox" name="tequila" class="filter-input" value="Tequila" />Tequila</li>
+            <li><input id="bourbon" type="checkbox" name="bourbon" class="filter-input" value="Bourbon" />Bourbon</li>
+            <li><input id="brandy" type="checkbox" name="brandy" class="filter-input" value="Brandy" />Brandy</li>
           </ul>
 
           <!-- <button class="clear-filter-btns">clear</button> -->
@@ -87,12 +88,10 @@
             <!-- <button class="expand-collapse-filter">+</button>
             <button class="clear-filter-btns">clear</button> -->
           </div>
-          <ul id="type-filter-list" class="single-filter-list hidden">
-            <li><input type="checkbox" class="filter-intput" value="Cocktail" />Cocktail</li>
-            <li><input type="checkbox" class="filter-intput" value="Shot" />Shot</li>
-            <li><input type="checkbox" class="filter-intput" value="Punch \/ Party Drink" />Punch</li>
-            <li><input type="checkbox" class="filter-intput" value="other" />Other</li>
-
+          <ul id="type-filter-list" class="single-filter-list">
+            <li><input id="cocktail" type="checkbox" class="filter-input" value="Cocktail" />Cocktail</li>
+            <li><input id="shot" type="checkbox" class="filter-input" value="Shot" />Shot</li>
+            <li><input id="punch" type="checkbox" class="filter-input" value="Punch \/ Party Drink" />Punch</li>
           </ul>
 
         </div>
@@ -105,7 +104,6 @@
       <div class="cards"></div>
       <!-- cards shows here -->
      <!-- modal start -->
-     <div>
       <div id="detailed-modal">
         <h3 id="drink-name-modal"></h3>
         <table id="ingredient-measure">
