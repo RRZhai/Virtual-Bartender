@@ -22,9 +22,11 @@ const ingTable = document.getElementById('ingredient')
 
 
 //buttons n stuff constants:
-const surpriseBtn = document.querySelector("#random-filter-btn");
-const popularBtn = document.querySelector("#most-popular-btn");
-const latestDrinksBtn = document.querySelector("#new-recipies-btn");
+// const surpriseBtn = document.querySelector("#random-filter-btn");
+// const popularBtn = document.querySelector("#most-popular-btn");
+// const latestDrinksBtn = document.querySelector("#new-recipies-btn");
+
+//filter constants
 
 //functions
 
@@ -92,7 +94,6 @@ const renderDrink = (drink) => {
     drink.strIngredient2,
     drink.strCategory,
   ];
-
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
@@ -203,12 +204,86 @@ document.addEventListener("click", (e) => {
       });
   }
 });
-
-//filter section
-
-const checkBoxForm = document.getElementById("filter-section-form");
-
 document.addEventListener("change", (e) => {
-  const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
-  console.log("checkbox got clicked"); // This works!
+  let isCheckBoxClick = e.target.classList.contains("filter-input");
+  if (isCheckBoxClick) {
+    const pageDrinksArray = Array.from(
+      document.querySelectorAll(`[data-check-box-tags]`)
+    );
+    console.log(pageDrinksArray);
+    const currentCheckArray = checkBoxClick();
+    pageDrinksArray.forEach((pageDrink) =>
+      setCardVisibility(pageDrink, currentCheckArray)
+    );
+  } else {
+    console.log("I dont think I'm a checkbox");
+  }
 });
+
+function setCardVisibility(drinkCardDiv, currentCheckArray) {
+  const activeCardAttr = drinkCardDiv.dataset.checkBoxTags;
+  const filteredArrayMatches = activeCardAttr
+    .split(",")
+    .filter((value) => currentCheckArray.includes(value));
+  if (filteredArrayMatches.length > 0) {
+    drinkCardDiv.classList.remove("hidden");
+  } else {
+    drinkCardDiv.classList.add("hidden");
+  }
+
+  //   let activeCardAttr = [];
+  //   activeCardDiv.split(drinkCardDiv.dataset.checkBoxTags);
+  //   // let activeCheckBArray = [];
+  //   // activeCheckBArray.push(checkBoxClick());
+  //   const filterMatchesArray = activeCardDiv.filter((x) =>
+  //     currentCheckArray.includes(x)
+  //   );
+  //   if (filterMatchesArray.length > 0) {
+  //     null;
+  //   } else {
+  //     drinkCardDiv.classList.add("hidden");
+  //   }
+}
+
+function checkBoxClick() {
+  const currentCheckArray = [];
+  document.getElementById("vodka").checked
+    ? currentCheckArray.push("Vodka")
+    : null;
+  document.getElementById("whiskey").checked
+    ? currentCheckArray.push("Whiskey")
+    : null;
+  document.getElementById("rum").checked ? currentCheckArray.push("Rum") : null;
+  document.getElementById("gin").checked ? currentCheckArray.push("Gin") : null;
+  document.getElementById("scotch").checked
+    ? currentCheckArray.push("Scotch")
+    : null;
+  document.getElementById("tequila").checked
+    ? currentCheckArray.push("Tequila")
+    : null;
+  document.getElementById("bourbon").checked
+    ? currentCheckArray.push("Broubon")
+    : null;
+  document.getElementById("brandy").checked
+    ? currentCheckArray.push("Brandy")
+    : null;
+  document.getElementById("alcoholic").checked
+    ? currentCheckArray.push("Alcoholic")
+    : null;
+  document.getElementById("non-alcoholic").checked
+    ? currentCheckArray.push("Non alcoholic")
+    : null;
+  document.getElementById("optional-alcohol").checked
+    ? currentCheckArray.push("Optional Alcohol")
+    : null;
+  document.getElementById("cocktail").checked
+    ? currentCheckArray.push("Cocktail")
+    : null;
+  document.getElementById("shot").checked
+    ? currentCheckArray.push("Shot")
+    : null;
+  document.getElementById("punch").checked
+    ? currentCheckArray.push("Punch / Party Drink")
+    : null;
+  return currentCheckArray;
+}
