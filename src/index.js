@@ -96,6 +96,7 @@ const renderDrink = (drink) => {
 }
 
 const column1 = (drink) => {
+  ingTable.innerHTML = '';
   (ingredientList(drink)).forEach(ingredient => {
     const createIng = document.createElement('td')
     createIng.innerText = ingredient
@@ -103,6 +104,7 @@ const column1 = (drink) => {
   })
 }
 const column2 = (drink) => {
+  meaTable.innerHTML = '';
   (measureList(drink)).forEach(measure => {
     const createMea = document.createElement('td')
     createMea.innerText = measure

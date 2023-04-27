@@ -188,17 +188,13 @@ h3 {
     font-size: larger;
 }
 
-table{
-    /* border: 1px solid; */
-    border-collapse: collapse;
-    width:100%;
+td{
+    padding-inline: 15px;
 }
 
-#ingredient {
-    left: 100px;
+#instructions-modal{
+    font-size: larger;
 }
-
-
 
 
 /* Not Categorized */
