@@ -185,11 +185,10 @@ searchForm.addEventListener("submit", (e) => {
   cards.innerHTML = "";
   userSearchByName();
 });
-
+document.addEventListener('DOMContentLoaded',()=>fetchRandom())
 //preset filter section
-
 document.addEventListener("click", (e) => {
-  const isPresetFilter = e.target.classList.contains("preset-filter-btn"); //adding event listen to each preset filter box
+  const isPresetFilter = e.target.classList.contains("preset-filter-btn"); 
   const presetURLAdd = e.target.value;
   if (isPresetFilter) {
     fetch(
@@ -287,3 +286,4 @@ function checkBoxClick() {
     : null;
   return currentCheckArray;
 }
+document.addEventListener('DOMContentLoaded',()=>fetchRandom())
