@@ -106,22 +106,24 @@ h3 {
 /* Card Section */
 
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 68%;
-  padding-left: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 68%;
+    padding-left: 30px;
 }
 .cards{
-  display: flex;
-  gap: 5px;
-  overflow-y: auto;
-  overscroll-behavior-inline: contain;
-  padding: 20px;
-  height: 235px;
+    display: flex;
+    gap: 5px;
+    overflow-y: auto;
+    overscroll-behavior-inline: contain;
+    padding: 20px;
+    height: 235px;
 }
 .single-card {
-  height: 222px;
+    height: 222px;
+
 }
 
 .drink-img {
@@ -163,21 +165,34 @@ h3 {
   font-size:xx-large
 }
 
+
+#drink-name-modal {
+    font-size:xx-large
+}
+
 #img-modal{
-  position: relative;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    width: 700px;
 }
 
 #ingredient-measure{
-  font-size: larger;
+    font-size: larger;
+
+}
+
+td{
+    padding-inline: 15px;
+}
+
+#instructions-modal{
+    font-size: larger;
+    width: 700px;
 }
 
 
 
-
-
-/* Not Categorized */
 
 
 
