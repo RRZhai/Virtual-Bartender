@@ -1,4 +1,4 @@
-// LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
+
 //////global constants/////
 
 //search Bar/Nav constants (nolan)
@@ -38,9 +38,6 @@ const fetchDrink = () => {
 };
 fetchDrink();
 
-//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
-//need to figure out why
-
 const userSearchByName = (drinkName) => {
     const input = (formSearchInput.value)
     const URLinput = encodeURI(input.replace(' ','_'));
@@ -56,7 +53,6 @@ const userSearchByName = (drinkName) => {
     })
 }
 
-//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into 
 const userSearchByIngredient = () => {
     const input = (formSearchInput.value)
     URLinput = encodeURI(input.replace(' ','_'));
@@ -114,13 +110,16 @@ const column2 = (drink) => {
 }
 
 const handleDrink = (drink) => {
+
   modalImg.remove()
   modalInst.remove()
+
   modalImg.src = drink.strDrinkThumb
   modalName.innerText = drink.strDrink
   column1(drink)
   column2(drink)
   modalInst.textContent = drink.strInstructions
+
   modelDtl.append(modalInst, modalImg)
 }
 
@@ -139,6 +138,7 @@ const ingredientList = (drink) => {
 
 const measureList = (drink) => {
   let meaKeyArr = Object.keys(drink).filter(keys => {
+
       return keys[3] === 'M'
   })
   const meaArr = []
@@ -167,19 +167,7 @@ function fetchRandom() {
     .then(randomDrinksArray => randomDrinksArray.drinks.forEach(oneRandomDrink =>renderDrink(oneRandomDrink)));
 }
 
-
-//search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
-//order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
-const searchFilter = () => {
-  let selectedFilter = searchFilter.value;
-};
-
-const fetch4DrinkIngredients = () => {
-  fetch("").then().then();
-};
-
 ///event listeners:
-
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -214,7 +202,3 @@ document.addEventListener("change", (e) => {
   const isCheckBoxClick = e.target.classList.contains("filter-input"); // adding event listener to eachcheckbox (with matching class)
   console.log("checkbox got clicked"); // This works!
 });
-
-
-
-
