@@ -1,4 +1,4 @@
-// LINES WITH ** in comment are lines that seem like we can delete(?) or were commented out before and need looking at
+
 //////global constants/////
 
 //search Bar/Nav constants (nolan)
@@ -10,13 +10,16 @@ const nameFilter = document.querySelector("#nameFilter");
 const searchForm = document.querySelector("#searchForm");
 
 //card constants (shiyao)
-const cards = document.querySelector(".cards");
-const modalName = document.getElementById("drink-name-modal");
-const modalImg = document.getElementById("img-modal");
-const ingAndMea = document.getElementById("ingredient-measure");
-const modalInst = document.getElementById("instructions-modal");
-const meaTable = document.querySelector(".Measure");
-const ingTable = document.getElementById("ingredient");
+
+const cards = document.querySelector('.cards')
+const modelDtl = document.querySelector('#detailed-modal')
+const modalName = document.getElementById('drink-name-modal')
+const modalImg = document.getElementById('img-modal')
+const ingAndMea = document.getElementById('ingredient-measure')
+const modalInst = document.getElementById('instructions-modal')
+const meaTable = document.querySelector('.Measure')
+const ingTable = document.getElementById('ingredient')
+
 
 //buttons n stuff constants:
 // const surpriseBtn = document.querySelector("#random-filter-btn");
@@ -39,9 +42,6 @@ const fetchDrink = () => {
 };
 fetchDrink();
 
-//nolan is still working on this one... ingredients need to be able to get sent to function if theyre two words
-//need to figure out why
-
 const userSearchByName = (drinkName) => {
   const input = formSearchInput.value;
   const URLinput = encodeURI(input.replace(" ", "_"));
@@ -58,7 +58,6 @@ const userSearchByName = (drinkName) => {
     });
 };
 
-//is the issue here that because I am using ingredient as a search parameter --> youre just fetching the drink and its id --> that data needs to somehow go into
 const userSearchByIngredient = () => {
   const input = formSearchInput.value;
   URLinput = encodeURI(input.replace(" ", "_"));
@@ -99,27 +98,37 @@ const renderDrink = (drink) => {
 };
 
 const column1 = (drink) => {
-  ingredientList(drink).forEach((ingredient) => {
-    const createIng = document.createElement("th");
-    createIng.innerText = ingredient;
-    ingTable.append(createIng);
-  });
-};
+
+  ingTable.innerHTML = '';
+  (ingredientList(drink)).forEach(ingredient => {
+    const createIng = document.createElement('td')
+    createIng.innerText = ingredient
+    ingTable.append(createIng)
+  })
+}
 const column2 = (drink) => {
-  measureList(drink).forEach((measure) => {
-    const createMea = document.createElement("th");
-    createMea.innerText = measure;
-    meaTable.append(createMea);
-  });
-};
+  meaTable.innerHTML = '';
+  (measureList(drink)).forEach(measure => {
+    const createMea = document.createElement('td')
+    createMea.innerText = measure
+    meaTable.append(createMea)
+  })
+}
 
 const handleDrink = (drink) => {
-  modalImg.src = drink.strDrinkThumb;
-  modalName.innerText = drink.strDrink;
-  column1(drink);
-  column2(drink);
-  modalInst.textContent = drink.strInstructions;
-};
+
+  modalImg.remove()
+  modalInst.remove()
+
+  modalImg.src = drink.strDrinkThumb
+  modalName.innerText = drink.strDrink
+  column1(drink)
+  column2(drink)
+  modalInst.textContent = drink.strInstructions
+
+  modelDtl.append(modalInst, modalImg)
+}
+
 
 const ingredientList = (drink) => {
   let ingreKeyArr = Object.keys(drink).filter((keys) => {
@@ -135,13 +144,16 @@ const ingredientList = (drink) => {
 };
 
 const measureList = (drink) => {
-  let meaKeyArr = Object.keys(drink).filter((keys) => {
-    return keys[9] === "e";
-  });
-  const meaArr = [];
-  for (let i = 0; i < meaKeyArr.length; i++) {
-    if (drink[meaKeyArr[i]]) {
-      meaArr.push(drink[meaKeyArr[i]]);
+
+  let meaKeyArr = Object.keys(drink).filter(keys => {
+
+      return keys[3] === 'M'
+  })
+  const meaArr = []
+  for (let i = 0; i < meaKeyArr.length; i++ ){
+    if (drink[meaKeyArr[i]]){
+      meaArr.push(drink[meaKeyArr[i]])
+
     }
   }
   return meaArr;
@@ -166,18 +178,7 @@ function fetchRandom() {
     );
 }
 
-//search filter will take in an array of drinks from fetch, and sort out any ones that meet the .value of searchFilter
-//order of operations --> list starts empty --> on search activates searchFilter which chooses which fetch function to use,
-const searchFilter = () => {
-  let selectedFilter = searchFilter.value;
-};
-
-const fetch4DrinkIngredients = () => {
-  fetch("").then().then();
-};
-
 ///event listeners:
-
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
