@@ -8,11 +8,14 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <script defer src="src/apiKey.js"></script>
   <script defer src="src/index.js"></script>
-  <title>Document</title>
+  <title>Flatiron Virtual Bartender</title>
 </head>
 
 <body>
-  <div id="title">Title Block</div>
+  <div id="title">
+    <h1 id="pageTitle">Flatiron Virtual Bar </h1>
+    <h3 id="catchPhrase">A Drink For Every Dev</h3>
+  </div>
 
   <div id="side-panel">
     <div id='searchNav' class='column'>
@@ -72,21 +75,18 @@
       </div>
     </div>
   </div>
-
-
   <div id="container">
     <div class="cards"></div>
-    <!-- cards shows here -->
-    <!-- modal start -->
+      <!-- cards shows here -->
+     <!-- modal start -->
     <div id="detailed-modal">
-      <h3 id="drink-name-modal"></h3>
-      <table id="ingredient-measure">
-        <tr class='Measure'></tr>
-        <tr id='ingredient'></tr>
-      </table>
-      <img id="img-modal" src="" alt="" />
-      <p id="instructions-modal"></p>
-
+        <h3 id="drink-name-modal"></h3>
+        <table id="ingredient-measure">
+          <tr class='Measure'></tr>
+          <tr id='ingredient'></tr>
+        </table>
+        <img id="img-modal" src="" alt="" />
+        <p id="instructions-modal"></p>
     </div>
     <!-- modal end -->
   </div>

@@ -95,6 +95,7 @@ const renderDrink = (drink) => {
 };
 
 const column1 = (drink) => {
+
   ingTable.innerHTML = "";
   ingredientList(drink).forEach((ingredient) => {
     const createIng = document.createElement("td");
@@ -102,6 +103,7 @@ const column1 = (drink) => {
     ingTable.append(createIng);
   });
 };
+
 const column2 = (drink) => {
   meaTable.innerHTML = "";
   measureList(drink).forEach((measure) => {
@@ -112,15 +114,24 @@ const column2 = (drink) => {
 };
 
 const handleDrink = (drink) => {
-  modalImg.remove();
-  modalInst.remove();
 
-  modalImg.src = drink.strDrinkThumb;
-  modalName.innerText = drink.strDrink;
-  column1(drink);
-  column2(drink);
-  modalInst.textContent = drink.strInstructions;
-
+  if (modalName.innerText !== drink.strDrink){
+    modalImg.remove()
+    modalInst.remove()
+    modalImg.src = drink.strDrinkThumb
+    modalName.innerText = drink.strDrink
+    column1(drink)
+    column2(drink)
+    modalInst.textContent = drink.strInstructions
+    modelDtl.append(modalInst, modalImg)
+  } else {
+    modalImg.src = ''
+    modalName.innerText = ''
+    modalInst.textContent = ''
+    ingTable.innerHTML = ''
+    meaTable.innerHTML = ''
+  }
+}
   modelDtl.append(modalInst, modalImg);
 };
 
@@ -138,13 +149,13 @@ const ingredientList = (drink) => {
 };
 
 const measureList = (drink) => {
-  let meaKeyArr = Object.keys(drink).filter((keys) => {
-    return keys[3] === "M";
-  });
-  const meaArr = [];
-  for (let i = 0; i < meaKeyArr.length; i++) {
-    if (drink[meaKeyArr[i]]) {
-      meaArr.push(drink[meaKeyArr[i]]);
+  let meaKeyArr = Object.keys(drink).filter(keys => {
+      return keys[3] === 'M'
+  })
+  const meaArr = []
+  for (let i = 0; i < meaKeyArr.length; i++ ){
+    if (drink[meaKeyArr[i]]){
+      meaArr.push(drink[meaKeyArr[i]])
     }
   }
   return meaArr;
@@ -254,3 +265,4 @@ function checkBoxClick() {
     : null;
   return currentCheckArray;
 }
+

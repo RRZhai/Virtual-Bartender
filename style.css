@@ -6,7 +6,7 @@
 
 
 body {
-  font-family: 'Recoleta';
+  font-family: 'Marcellus', serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -14,13 +14,21 @@ body {
 
 #title {
   text-align: center;
-  font-size: 30px;
+
   width: 100%;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   padding-bottom: 30px;
 }
-
-
+#pageTitle{
+  font-size: 50px;
+  padding-bottom: 5px;
+  /* text-align: center; */
+}
+#catchPhrase{
+  padding-top: none;
+  font-size: 30px;
+  /* text-align: left; */
+}
 /* Side-Panel */
 
 #side-panel {
@@ -38,13 +46,15 @@ width: 22%;
   border: 0 none;
   padding: 0 none;
   margin: 0 none;
+  border-radius: 25px;
 }
 
 
 #searchForm input{
   display: inline-block;
   font-size: 16px;
-  border: 0 none;;
+  border: 0 none;
+  /* border-radius: 25px; */
   box-sizing: border-box;
   float: left;
   height: 25px;
@@ -54,6 +64,7 @@ width: 22%;
   display: inline-block;
   position: relative;
   width: 10%;
+  /* border-radius: 25px; */
   padding: 0;
   text-decoration: none;
   border: none;
@@ -67,7 +78,7 @@ width: 22%;
   height: 25px;
   display: block;
   width: 100%;
-
+  border-radius: 25px;
   text-align: center;
 }
 #searchForm::after {
@@ -102,7 +113,19 @@ h3 {
   border-bottom: 1px;
   border-bottom-style: solid;
 }
+.hidden {
+    display: none;
+}
+#preset-Filters{
+  align-items: center;
+}
+#random-filter-btn, #most-popular-btn, #new-recipies-btn{
+  border-radius: 30px;
+  align-items: center;
+}
+/* Card Section */
 
+#container {
 
 /* Card Section */
 
@@ -191,11 +214,3 @@ td{
     font-size: larger;
     width: 700px;
 }
-
-
-
-
-
-
-
-

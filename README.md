@@ -1,3 +1,4 @@
+
 # Phase 1 Table 5 Project: Flatiron Virtual Bartender
 
 ## PROJECT INFO:
@@ -8,13 +9,17 @@ Hello and welcome to Flatiron Virtual Bartender! Flatiron Virtual Bartender is a
 
 The project incluedes several key features intended to demonstrate comprehensive knowledge of DOM events, fetch requests from a database and generally highlight the skills learned in Phase 1 here at flatiron school. In our application you can see
 *Search Bar With Dropdown Filter
-*The search bar has two selectable dropdowns which allow you to change how you search:
-_The Drink Name filter is the default filter and will return all drinks whos name contains the users search
-_
+
+    *The search bar has two selectable dropdowns which allow you to change how you search:
+        *The Drink Name filter is the default filter and will return all drinks whos name contains the users search
+        *The ingredient filter is a bit more complicated, it initially returns all drinks containing the ingredient the user searched for, however the format it gets return in is not viable with the function rendering the drinks to the cards on the screen, so the name of each drink returned from the search is mapped into a new array and then that array is sent to the same fetch function used for the names filter
+
 *clickable Further Filter Options
 *The spirit filter allows you to narrow down the search results once to focus just on the spirit of your choice. Multi-filter coming soon!
 *Buttons To Provide preset selection options
-*Clickable Drink Cards in a scrollable box - a click provides
+
+**Clickable Drink Cards in a scrollable box - a click provides. Once you click the card, you will be able to see a the receipe with a enlarged image. 
+
 
 ### To install this application all you need to do is:
 
@@ -25,9 +30,11 @@ _
 ## LICENSE, ACKNOWLEDGEMENTS and FURTHER READING:
 
 **Read Our Phase One Blog Posts**
-[Shiyao's Blog]()
-[Ren's Blog](https://dev.to/rcblake)
-[Nolan's Blog]()
+    [Shiyao's Blog](https://medium.com/@zsshiyaozhai/behind-the-screen-my-journey-as-a-coding-rookie-through-phase-1-in-coding-bootcamp-7f3217cb7bb2)
+    [Ren's Blog](https://dev.to/rcblake)
+    [Nolan's Blog](https://nolan.hashnode.dev/)
 
-https://codepen.io/Juxtopposed/pen/BaqLEQY
+
+**sources**
 https://www.thecocktaildb.com/api.php
+    *Database used for application
