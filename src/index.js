@@ -86,7 +86,10 @@ const renderDrink = (drink) => {
   card.append(drinkImg, drinkName);
   drinkInfo(drink, drinkName);
 
-  card.dataset.checkBoxTags = [drink.strIngredient1, drink.strIngredient2];
+  card.dataset.alcTags = drink.strAlcoholic;
+  card.dataset.spiritTags = [drink.strIngredient1, drink.strIngredient2];
+  card.dataset.typeTags = drink.strCategory;
+  pageDrinksArray.push(card);
 
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
@@ -198,9 +201,9 @@ const pageDrinksArray = [];
 document.addEventListener("change", (e) => {
   let isCheckBoxClick = e.target.classList.contains("filter-input");
   if (isCheckBoxClick) {
-    const pageDrinksArray = Array.from(
-      document.querySelectorAll(`[data-check-box-tags]`)
-    );
+    // const pageDrinksArray = Array.from(
+    //   document.querySelectorAll(`[data-check-box-tags]`)
+    // );
     console.log(pageDrinksArray);
     const currentCheckArray = checkBoxClick();
     pageDrinksArray.forEach((pageDrink) =>
@@ -224,7 +227,7 @@ function setCardVisibility(drinkCardDiv, currentCheckArray) {
     drinkCardDiv.classList.add("hidden");
   }
   // the && logic doesn't work quite right
-  // default when no checkboxes are clicked
+  // default when no checkboxes are clic
 }
 
 function checkBoxClick() {
@@ -249,6 +252,5 @@ function checkBoxClick() {
   document.getElementById("brandy").checked
     ? currentCheckArray.push("Brandy")
     : null;
-
   return currentCheckArray;
 }
