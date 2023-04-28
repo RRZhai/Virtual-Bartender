@@ -46,13 +46,15 @@ width: 22%;
   border: 0 none;
   padding: 0 none;
   margin: 0 none;
+  border-radius: 25px;
 }
 
 
 #searchForm input{
   display: inline-block;
   font-size: 16px;
-  border: 0 none;;
+  border: 0 none;
+  /* border-radius: 25px; */
   box-sizing: border-box;
   float: left;
   height: 25px;
@@ -62,6 +64,7 @@ width: 22%;
   display: inline-block;
   position: relative;
   width: 10%;
+  /* border-radius: 25px; */
   padding: 0;
   text-decoration: none;
   border: none;
@@ -75,7 +78,7 @@ width: 22%;
   height: 25px;
   display: block;
   width: 100%;
-
+  border-radius: 25px;
   text-align: center;
 }
 #searchForm::after {
@@ -114,7 +117,11 @@ h3 {
     display: none;
 }
 #preset-Filters{
-  align-self: center;
+  align-items: center;
+}
+#random-filter-btn, #most-popular-btn, #new-recipies-btn{
+  border-radius: 30px;
+  align-items: center;
 }
 /* Card Section */
 
