@@ -38,3 +38,6 @@ The project incluedes several key features intended to demonstrate comprehensive
 **sources**
 https://www.thecocktaildb.com/api.php
     *Database used for application
+    
+background:
+https://codepen.io/P1N2O/pen/pyBNzX
