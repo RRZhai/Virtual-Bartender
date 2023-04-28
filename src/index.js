@@ -1,4 +1,3 @@
-
 //////global constants/////
 
 //search Bar/Nav constants (nolan)
@@ -288,3 +287,4 @@ function checkBoxClick() {
     : null;
   return currentCheckArray;
 }
+
