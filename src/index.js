@@ -33,6 +33,7 @@ const fetchDrink = () => {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then((resp) => resp.json())
     .then((drinkData) => {
+      handleDrink(drinkData.drinks[0]);
       drinkData.drinks.forEach((drink) => {
         renderDrink(drink);
       });
@@ -86,16 +87,13 @@ const renderDrink = (drink) => {
   card.append(drinkImg, drinkName);
   drinkInfo(drink, drinkName);
 
-  card.dataset.alcTags = drink.strAlcoholic;
-  card.dataset.spiritTags = [drink.strIngredient1, drink.strIngredient2];
-  card.dataset.typeTags = drink.strCategory;
+  card.dataset.checkBoxTags = [drink.strIngredient1, drink.strIngredient2];
   pageDrinksArray.push(card);
 
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
 const column1 = (drink) => {
-
   ingTable.innerHTML = "";
   ingredientList(drink).forEach((ingredient) => {
     const createIng = document.createElement("td");
@@ -114,25 +112,23 @@ const column2 = (drink) => {
 };
 
 const handleDrink = (drink) => {
-
-  if (modalName.innerText !== drink.strDrink){
-    modalImg.remove()
-    modalInst.remove()
-    modalImg.src = drink.strDrinkThumb
-    modalName.innerText = drink.strDrink
-    column1(drink)
-    column2(drink)
-    modalInst.textContent = drink.strInstructions
-    modelDtl.append(modalInst, modalImg)
+  if (modalName.innerText !== drink.strDrink) {
+    modalImg.remove();
+    modalInst.remove();
+    modalImg.src = drink.strDrinkThumb;
+    modalName.innerText = drink.strDrink;
+    column1(drink);
+    column2(drink);
+    modalInst.textContent = drink.strInstructions;
+    modelDtl.append(modalInst, modalImg);
   } else {
-    modalImg.src = ''
-    modalName.innerText = ''
-    modalInst.textContent = ''
-    ingTable.innerHTML = ''
-    meaTable.innerHTML = ''
+    modalImg.src = "";
+    modalName.innerText = "";
+    modalInst.textContent = "";
+    ingTable.innerHTML = "";
+    meaTable.innerHTML = "";
   }
-}
-
+};
 
 const ingredientList = (drink) => {
   let ingreKeyArr = Object.keys(drink).filter((keys) => {
@@ -148,13 +144,13 @@ const ingredientList = (drink) => {
 };
 
 const measureList = (drink) => {
-  let meaKeyArr = Object.keys(drink).filter(keys => {
-      return keys[3] === 'M'
-  })
-  const meaArr = []
-  for (let i = 0; i < meaKeyArr.length; i++ ){
-    if (drink[meaKeyArr[i]]){
-      meaArr.push(drink[meaKeyArr[i]])
+  let meaKeyArr = Object.keys(drink).filter((keys) => {
+    return keys[3] === "M";
+  });
+  const meaArr = [];
+  for (let i = 0; i < meaKeyArr.length; i++) {
+    if (drink[meaKeyArr[i]]) {
+      meaArr.push(drink[meaKeyArr[i]]);
     }
   }
   return meaArr;
@@ -167,17 +163,6 @@ const drinkInfo = (drink, drinkName) => {
   drinkIng1.textContent = drink.strIngredient1;
   drinkName.append(drinkType, drinkIng1);
 };
-
-//Initial Page fetch with 10 random drinks for
-function fetchRandom() {
-  fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
-    .then((res) => res.json())
-    .then((randomDrinksArray) =>
-      randomDrinksArray.drinks.forEach((oneRandomDrink) =>
-        renderDrink(oneRandomDrink)
-      )
-    );
-}
 
 ///event listeners:
 searchForm.addEventListener("submit", (e) => {
@@ -264,4 +249,3 @@ function checkBoxClick() {
     : null;
   return currentCheckArray;
 }
-
