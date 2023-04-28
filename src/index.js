@@ -132,8 +132,7 @@ const handleDrink = (drink) => {
     meaTable.innerHTML = ''
   }
 }
-  modelDtl.append(modalInst, modalImg);
-};
+
 
 const ingredientList = (drink) => {
   let ingreKeyArr = Object.keys(drink).filter((keys) => {
