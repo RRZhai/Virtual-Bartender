@@ -202,6 +202,15 @@ h3 {
 
 
 /* Modal */
+#detailed-modal {
+  background-color: rgba(212, 204, 204, 0.611);
+  padding: 20px;
+  border-radius: 15px;
+  justify-content: space-around;
+  margin-left: 10%
+}
+
+
 #drink-name-modal {
   font-size:xx-large
 }
