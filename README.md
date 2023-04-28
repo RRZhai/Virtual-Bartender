@@ -1,3 +1,4 @@
+
 # Phase 1 Table 5 Project: Flatiron Virtual Bartender
 ## PROJECT INFO:
 Hello and welcome to Flatiron Virtual Bartender! Flatiron Virtual Bartender is a single page JavaScript application intended to allow users to seach/find a wide variety of drinks (both with and without alcohol) they can make with the ingredients in their home. To do this the application allows a user to search by either the name of a drink or by a specific ingredient. Users are then able to filter the results with clickable filter options. The results are placed into a scrollable list, that on clicking a drink presents the user with a full ingredient list as well as how to make the drink. This project uses JavaScript and CSS to interact with HTML
@@ -10,7 +11,7 @@ The project incluedes several key features intended to demonstrate comprehensive
 *clickable Further Filter Options
     *
 *Buttons To Provide preset selection options
-*Clickable Drink Cards in a scrollable box - a click provides  
+**Clickable Drink Cards in a scrollable box - a click provides. Once you click the card, you will be able to see a the receipe with a enlarged image. 
 
 ### To install this application all you need to do is:
 1: Fork and clone this repository from GitHub into your personal environment and local directory
@@ -21,10 +22,10 @@ The project incluedes several key features intended to demonstrate comprehensive
 
 ## LICENSE, ACKNOWLEDGEMENTS and FURTHER READING:
 **Read Our Phase One Blog Posts**
-    [Shiyao's Blog]()
+    [Shiyao's Blog](https://medium.com/@zsshiyaozhai/behind-the-screen-my-journey-as-a-coding-rookie-through-phase-1-in-coding-bootcamp-7f3217cb7bb2)
     [Ren's Blog]()
     [Nolan's Blog](https://nolan.hashnode.dev/)
 
 **sources**
 https://www.thecocktaildb.com/api.php
-    *Databased used for application
+    *Database used for application
