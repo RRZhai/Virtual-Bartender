@@ -10,7 +10,7 @@ The project incluedes several key features intended to demonstrate comprehensive
 *clickable Further Filter Options
     *
 *Buttons To Provide preset selection options
-*Clickable Drink Cards in a scrollable box - a click provides  
+*Clickable Drink Cards in a scrollable box - a click provides. Once you click the card, you will be able to see a the receipe with a enlarged image.
 
 ### To install this application all you need to do is:
 1: Fork and clone this repository from GitHub into your personal environment and local directory
@@ -21,7 +21,7 @@ The project incluedes several key features intended to demonstrate comprehensive
 
 ## LICENSE, ACKNOWLEDGEMENTS and FURTHER READING:
 **Read Our Phase One Blog Posts**
-    [Shiyao's Blog]()
+    [https://medium.com/@zsshiyaozhai/behind-the-screen-my-journey-as-a-coding-rookie-through-phase-1-in-coding-bootcamp-7f3217cb7bb2]()
     [Ren's Blog]()
     [Nolan's Blog]()
 
