@@ -6,7 +6,7 @@ The project incluedes several key features intended to demonstrate comprehensive
 *Search Bar With Dropdown Filter
     *The search bar has two selectable dropdowns which allow you to change how you search:
         *The Drink Name filter is the default filter and will return all drinks whos name contains the users search
-        *
+        *The ingredient filter is a bit more complicated, it initially returns all drinks containing the ingredient the user searched for, however the format it gets return in is not viable with the function rendering the drinks to the cards on the screen, so the name of each drink returned from the search is mapped into a new array and then that array is sent to the same fetch function used for the names filter
 *clickable Further Filter Options
     *
 *Buttons To Provide preset selection options
@@ -23,7 +23,8 @@ The project incluedes several key features intended to demonstrate comprehensive
 **Read Our Phase One Blog Posts**
     [Shiyao's Blog]()
     [Ren's Blog]()
-    [Nolan's Blog]()
+    [Nolan's Blog](https://nolan.hashnode.dev/)
 
-https://codepen.io/Juxtopposed/pen/BaqLEQY
+**sources**
 https://www.thecocktaildb.com/api.php
+    *Databased used for application

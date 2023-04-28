@@ -171,7 +171,8 @@ const drinkInfo = (drink, drinkName) => {
 function fetchRandom() {
   fetch("https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")
     .then((res) => res.json())
-    .then((randomDrinksArray) =>
+    .then((randomDrinksArray) => 
+      renderDrink(randomDrinksArray.drinks([0])),
       randomDrinksArray.drinks.forEach((oneRandomDrink) =>
         renderDrink(oneRandomDrink)
       )
@@ -185,7 +186,7 @@ searchForm.addEventListener("submit", (e) => {
   cards.innerHTML = "";
   userSearchByName();
 });
-document.addEventListener('DOMContentLoaded',()=>fetchRandom())
+
 //preset filter section
 document.addEventListener("click", (e) => {
   const isPresetFilter = e.target.classList.contains("preset-filter-btn"); 
@@ -286,4 +287,4 @@ function checkBoxClick() {
     : null;
   return currentCheckArray;
 }
-document.addEventListener('DOMContentLoaded',()=>fetchRandom())
+

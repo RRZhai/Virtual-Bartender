@@ -6,7 +6,7 @@
 
 
 body {
-  font-family: 'Recoleta';
+  font-family: 'Marcellus', serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -14,13 +14,21 @@ body {
 
 #title {
   text-align: center;
-  font-size: 30px;
+
   width: 100%;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   padding-bottom: 30px;
 }
-
-
+#pageTitle{
+  font-size: 50px;
+  padding-bottom: 5px;
+  /* text-align: center; */
+}
+#catchPhrase{
+  padding-top: none;
+  font-size: 30px;
+  /* text-align: left; */
+}
 /* Side-Panel */
 
 #side-panel {
@@ -105,7 +113,9 @@ h3 {
 .hidden {
     display: none;
 }
-
+#preset-Filters{
+  align-self: center;
+}
 /* Card Section */
 
 #container {
