@@ -1,12 +1,28 @@
 /* Global */
 
-:root{
-  background-color: #F0DBA5;
+:root {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
 body {
-  font-family: 'Marcellus', serif;
+  font-family: 'Marcellus', sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -35,9 +51,10 @@ body {
 margin: 0;
 padding: 10px;
 padding-top: 20px;
-border: 2px solid black;
+/* border: .5px solid black; */
 height: fit-content;
 width: 22%;
+border-radius: 15px;
 }
 #searchNav {
   position: sticky;
