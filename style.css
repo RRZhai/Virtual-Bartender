@@ -127,6 +127,10 @@ h3 {
 
 #container {
 
+/* Card Section */
+
+#container {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -164,10 +168,10 @@ h3 {
 .drink-info {
   position: relative;
   background-color: white;
-  font-size: 12px;
-  width: 90px;
-  right: -120px;
-  bottom: 100px;
+  font-size: 17px;
+  width: 156px;
+  right: -10px;
+  bottom: 85px;
   opacity: 0.8;
 }
 
@@ -210,11 +214,3 @@ td{
     font-size: larger;
     width: 700px;
 }
-
-
-
-
-
-
-
-

@@ -10,15 +10,14 @@ const searchForm = document.querySelector("#searchForm");
 
 //card constants (shiyao)
 
-const cards = document.querySelector('.cards')
-const modelDtl = document.querySelector('#detailed-modal')
-const modalName = document.getElementById('drink-name-modal')
-const modalImg = document.getElementById('img-modal')
-const ingAndMea = document.getElementById('ingredient-measure')
-const modalInst = document.getElementById('instructions-modal')
-const meaTable = document.querySelector('.Measure')
-const ingTable = document.getElementById('ingredient')
-
+const cards = document.querySelector(".cards");
+const modelDtl = document.querySelector("#detailed-modal");
+const modalName = document.getElementById("drink-name-modal");
+const modalImg = document.getElementById("img-modal");
+const ingAndMea = document.getElementById("ingredient-measure");
+const modalInst = document.getElementById("instructions-modal");
+const meaTable = document.querySelector(".Measure");
+const ingTable = document.getElementById("ingredient");
 
 //buttons n stuff constants:
 // const surpriseBtn = document.querySelector("#random-filter-btn");
@@ -87,33 +86,35 @@ const renderDrink = (drink) => {
   card.append(drinkImg, drinkName);
   drinkInfo(drink, drinkName);
 
-  card.dataset.checkBoxTags = [
-    drink.strAlcoholic,
-    drink.strIngredient1,
-    drink.strIngredient2,
-    drink.strCategory,
-  ];
+  card.dataset.alcTags = drink.strAlcoholic;
+  card.dataset.spiritTags = [drink.strIngredient1, drink.strIngredient2];
+  card.dataset.typeTags = drink.strCategory;
+  pageDrinksArray.push(card);
+
   drinkImg.addEventListener("click", () => handleDrink(drink));
 };
 
 const column1 = (drink) => {
-  ingTable.innerHTML = '';
-  (ingredientList(drink)).forEach(ingredient => {
-    const createIng = document.createElement('td')
-    createIng.innerText = ingredient
-    ingTable.append(createIng)
-  })
-}
+
+  ingTable.innerHTML = "";
+  ingredientList(drink).forEach((ingredient) => {
+    const createIng = document.createElement("td");
+    createIng.innerText = ingredient;
+    ingTable.append(createIng);
+  });
+};
+
 const column2 = (drink) => {
-  meaTable.innerHTML = '';
-  (measureList(drink)).forEach(measure => {
-    const createMea = document.createElement('td')
-    createMea.innerText = measure
-    meaTable.append(createMea)
-  })
-}
+  meaTable.innerHTML = "";
+  measureList(drink).forEach((measure) => {
+    const createMea = document.createElement("td");
+    createMea.innerText = measure;
+    meaTable.append(createMea);
+  });
+};
 
 const handleDrink = (drink) => {
+
   if (modalName.innerText !== drink.strDrink){
     modalImg.remove()
     modalInst.remove()
@@ -131,7 +132,8 @@ const handleDrink = (drink) => {
     meaTable.innerHTML = ''
   }
 }
-
+  modelDtl.append(modalInst, modalImg);
+};
 
 const ingredientList = (drink) => {
   let ingreKeyArr = Object.keys(drink).filter((keys) => {
@@ -204,12 +206,15 @@ document.addEventListener("click", (e) => {
       });
   }
 });
+
+const pageDrinksArray = [];
+
 document.addEventListener("change", (e) => {
   let isCheckBoxClick = e.target.classList.contains("filter-input");
   if (isCheckBoxClick) {
-    const pageDrinksArray = Array.from(
-      document.querySelectorAll(`[data-check-box-tags]`)
-    );
+    // const pageDrinksArray = Array.from(
+    //   document.querySelectorAll(`[data-check-box-tags]`)
+    // );
     console.log(pageDrinksArray);
     const currentCheckArray = checkBoxClick();
     pageDrinksArray.forEach((pageDrink) =>
@@ -225,24 +230,15 @@ function setCardVisibility(drinkCardDiv, currentCheckArray) {
   const filteredArrayMatches = activeCardAttr
     .split(",")
     .filter((value) => currentCheckArray.includes(value));
-  if (filteredArrayMatches.length > 0) {
+  if (currentCheckArray.length === 0) {
+    drinkCardDiv.classList.remove("hidden");
+  } else if (filteredArrayMatches.length > 0) {
     drinkCardDiv.classList.remove("hidden");
   } else {
     drinkCardDiv.classList.add("hidden");
   }
-
-  //   let activeCardAttr = [];
-  //   activeCardDiv.split(drinkCardDiv.dataset.checkBoxTags);
-  //   // let activeCheckBArray = [];
-  //   // activeCheckBArray.push(checkBoxClick());
-  //   const filterMatchesArray = activeCardDiv.filter((x) =>
-  //     currentCheckArray.includes(x)
-  //   );
-  //   if (filterMatchesArray.length > 0) {
-  //     null;
-  //   } else {
-  //     drinkCardDiv.classList.add("hidden");
-  //   }
+  // the && logic doesn't work quite right
+  // default when no checkboxes are clic
 }
 
 function checkBoxClick() {
@@ -266,24 +262,6 @@ function checkBoxClick() {
     : null;
   document.getElementById("brandy").checked
     ? currentCheckArray.push("Brandy")
-    : null;
-  document.getElementById("alcoholic").checked
-    ? currentCheckArray.push("Alcoholic")
-    : null;
-  document.getElementById("non-alcoholic").checked
-    ? currentCheckArray.push("Non alcoholic")
-    : null;
-  document.getElementById("optional-alcohol").checked
-    ? currentCheckArray.push("Optional Alcohol")
-    : null;
-  document.getElementById("cocktail").checked
-    ? currentCheckArray.push("Cocktail")
-    : null;
-  document.getElementById("shot").checked
-    ? currentCheckArray.push("Shot")
-    : null;
-  document.getElementById("punch").checked
-    ? currentCheckArray.push("Punch / Party Drink")
     : null;
   return currentCheckArray;
 }
